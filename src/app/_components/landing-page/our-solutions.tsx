@@ -3,25 +3,28 @@
 import { motion } from "motion/react"
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import IndustrialApplicationImg from "../../_assets/images/industrial-application.jpg"
+import ProductionDacilitiesImg from "../../_assets/images/production-facilities.jpg"
+import StorageTankImg from "../../_assets/images/storage-tank.jpg"
 
 const OurSolutions = () => {
   const solutions = [
     {
       title: "Hydrogen Production",
       description: "Building state-of-the-art facilities to produce green hydrogen using Africa's abundant renewable energy resources.",
-      image: "/images/hydrogen-production.jpg",
+      image: ProductionDacilitiesImg,
       alt: "Hydrogen production facility"
     },
     {
       title: "Storage & Distribution",
       description: "Developing innovative solutions for hydrogen storage and creating efficient distribution networks across the continent.",
-      image: "/images/hydrogen-storage.jpg",
+      image:StorageTankImg,
       alt: "Hydrogen storage tanks"
     },
     {
       title: "Industrial Applications",
       description: "Implementing hydrogen technologies in industries, transportation, and power generation to reduce carbon emissions.",
-      image: "/images/hydrogen-industrial.jpg",
+      image: IndustrialApplicationImg,
       alt: "Industrial hydrogen application"
     }
   ];
@@ -53,7 +56,7 @@ const OurSolutions = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <Card className="overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
+              <Card className="overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 p-0">
                 <div className="relative h-60">
                   <Image
                     src={solution.image}
