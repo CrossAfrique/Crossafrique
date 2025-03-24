@@ -1,0 +1,105 @@
+"use client";
+
+import { motion } from "motion/react"
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Calendar, User } from "lucide-react";
+
+const FeaturedPosts = () => {
+  const featuredPosts = [
+    {
+      id: 1,
+      title: "The Future of Green Hydrogen in Africa",
+      excerpt: "Exploring how green hydrogen can transform Africa's energy landscape and drive sustainable development across the continent.",
+      image: "/images/blog/green-hydrogen-africa.jpg",
+      date: "May 15, 2023",
+      author: "Dr. Sarah Kimani",
+      category: "Clean Energy & Sustainability"
+    },
+    {
+      id: 2,
+      title: "Innovative Storage Solutions for Hydrogen",
+      excerpt: "A deep dive into the latest technological breakthroughs in hydrogen storage and their implications for distribution networks.",
+      image: "/images/blog/hydrogen-storage.jpg",
+      date: "April 22, 2023",
+      author: "Eng. Michael Okafor",
+      category: "Hydrogen Technology & Innovation"
+    },
+    {
+      id: 3,
+      title: "Policy Frameworks for Hydrogen Development in East Africa",
+      excerpt: "Analyzing recent policy developments that are creating favorable conditions for hydrogen investments in East African nations.",
+      image: "/images/blog/policy-frameworks.jpg",
+      date: "March 10, 2023",
+      author: "Amina Diallo",
+      category: "Industry & Policy Updates"
+    }
+  ];
+
+  return (
+    <section className="py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl font-bold mb-8 text-gray-900 dark:text-white"
+        >
+          Featured Articles
+        </motion.h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {featuredPosts.map((post, index) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+            >
+              <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <Link href={`/blog/${post.id}`} className="block">
+                  <div className="relative h-48 w-full">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </Link>
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-3">
+                    <span className="text-xs font-medium px-2 py-1 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full">
+                      {post.category}
+                    </span>
+                  </div>
+                  <Link href={`/blog/${post.id}`}>
+                    <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                      {post.title}
+                    </h3>
+                  </Link>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center mr-4">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      <span>{post.date}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <User className="w-4 h-4 mr-1" />
+                      <span>{post.author}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturedPosts;
