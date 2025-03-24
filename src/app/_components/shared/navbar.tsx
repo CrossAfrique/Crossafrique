@@ -2,26 +2,37 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
+import CrossAfriqueImg from "../../_assets/images/crossafrique.svg"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isActive = (href: string) => {
+    // For exact matches
+    if (href === pathname) return true;
+    
+    // For nested routes (e.g., /solutions/[solutionId])
+    // This will highlight the parent route when on a child route
+    if (href !== "/" && pathname.startsWith(href)) return true;
+    
+    return false;
+  };
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -40,9 +51,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="flex items-center">
-            <span className="text-xl md:text-2xl font-bold text-emerald-600">
-              🌍 Crossafrique Hydrogen
+          <Link href="/" className="flex items-center relative -left-8">
+          <div className=" clip-logo">
+            <Image src={CrossAfriqueImg} alt="Crossarique" width={100} height={100} className="" />
+          </div>
+              <span className="text-xl md:text-2xl font-bold text-emerald-600">
+              Crossafrique Hydrogen
             </span>
           </Link>
 
@@ -52,7 +66,11 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                className={`${
+                  isActive(link.href)
+                    ? "text-emerald-600 dark:text-emerald-400 font-medium"
+                    : "text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400"
+                } transition-colors`}
               >
                 {link.label}
               </Link>
@@ -86,7 +104,11 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-2"
+                  className={`${
+                    isActive(link.href)
+                      ? "text-emerald-600 dark:text-emerald-400 font-medium"
+                      : "text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400"
+                  } transition-colors py-2`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
