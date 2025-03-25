@@ -13,6 +13,7 @@ import {
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 // This would typically come from a CMS or database
 const getProject = (id: string) => {
@@ -70,10 +71,9 @@ const getProject = (id: string) => {
 	return projects.find((project) => project.id === id) || projects[0]; // Default to first project if not found
 };
 
-export default function ProjectDetailPage({
-	params,
-}: { params: { id: string } }) {
-	const project = getProject(params.id);
+export default function ProjectDetailPage() {
+	const params = useParams();
+	const project = getProject(params.id as string);
 
 	return (
 		<div className="pt-16">
