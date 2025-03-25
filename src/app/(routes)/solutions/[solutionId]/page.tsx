@@ -361,9 +361,9 @@ export default function SolutionPage() {
 								{solution.description}
 							</p>
 							<div className="flex flex-wrap gap-4 mb-8">
-								{solution.applications.map((application, index) => (
+								{solution.applications.map((application) => (
 									<span
-										key={index}
+										key={application}
 										className="bg-emerald-600 px-4 py-2 rounded-full text-sm font-medium"
 									>
 										{application}
@@ -421,8 +421,8 @@ export default function SolutionPage() {
 								Key Features
 							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-								{solution.features?.map((feature, index) => (
-									<div key={index} className="flex items-start">
+								{solution.features?.map((feature) => (
+									<div key={feature} className="flex items-start">
 										<div className="bg-emerald-100 dark:bg-emerald-900/50 p-2 rounded-full mr-4 mt-1">
 											<CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
 										</div>
@@ -444,8 +444,8 @@ export default function SolutionPage() {
 								Benefits
 							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-								{solution.benefits.map((benefit, index) => (
-									<div key={index} className="flex items-start">
+								{solution.benefits.map((benefit) => (
+									<div key={benefit} className="flex items-start">
 										<div className="bg-emerald-100 dark:bg-emerald-900/50 p-2 rounded-full mr-4 mt-1">
 											<CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
 										</div>
@@ -488,7 +488,7 @@ export default function SolutionPage() {
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 							{solution.caseStudies.map((caseStudy, index) => (
 								<motion.div
-									key={index}
+									key={caseStudy.title}
 									initial={{ opacity: 0, y: 30 }}
 									whileInView={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: index * 0.1 }}
