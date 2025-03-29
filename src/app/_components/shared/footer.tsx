@@ -25,30 +25,30 @@ const Footer = () => {
 							African continent.
 						</p>
 						<div className="flex space-x-4">
-							<a
+							<Link
 								href="#"
 								className="text-gray-400 hover:text-emerald-500 transition-colors"
 							>
 								<Facebook size={20} />
-							</a>
-							<a
+							</Link>
+							<Link
 								href="#"
 								className="text-gray-400 hover:text-emerald-500 transition-colors"
 							>
 								<Twitter size={20} />
-							</a>
-							<a
+							</Link>
+							<Link
 								href="#"
 								className="text-gray-400 hover:text-emerald-500 transition-colors"
 							>
 								<Linkedin size={20} />
-							</a>
-							<a
+							</Link>
+							<Link
 								href="#"
 								className="text-gray-400 hover:text-emerald-500 transition-colors"
 							>
 								<Instagram size={20} />
-							</a>
+							</Link>
 						</div>
 					</div>
 
@@ -96,36 +96,36 @@ const Footer = () => {
 						<h3 className="text-lg font-semibold mb-4">Our Solutions</h3>
 						<ul className="space-y-2">
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/solutions/green-hydrogen-production"
 									className="text-gray-400 hover:text-emerald-500 transition-colors"
 								>
 									Hydrogen Production
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/solutions/energy-storage"
 									className="text-gray-400 hover:text-emerald-500 transition-colors"
 								>
 									Storage & Distribution
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/solutions/industrial-applications"
 									className="text-gray-400 hover:text-emerald-500 transition-colors"
 								>
 									Industrial Applications
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/solutions/sustainable-agriculture"
 									className="text-gray-400 hover:text-emerald-500 transition-colors"
 								>
-									Consulting Services
-								</a>
+									Sustainable Agriculture
+								</Link>
 							</li>
 						</ul>
 					</div>

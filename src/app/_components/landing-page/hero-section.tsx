@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import HydrogenImg from "./_assets/hydrogen.jpg";
 
 const HeroSection = () => {
 	return (
@@ -12,26 +13,13 @@ const HeroSection = () => {
 			{/* Background Image */}
 			<div className="absolute inset-0 z-0">
 				<div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10" />
-				<video
-					autoPlay
-					loop
-					muted
-					playsInline
-					className="w-full h-full object-cover"
-				>
-					<source
-						src="https://www.youtube.com/watch?v=qu1W-6gc36c&pp=ygUYaHlkcm9nZW4gcHJvZHVjdGlvbiBjbGlw"
-						type="video/mp4"
-					/>
-					{/* Fallback image if video doesn't load */}
-					<Image
-						src="/images/hydrogen-production.jpg"
-						alt="Clean hydrogen production"
-						layout="fill"
-						objectFit="cover"
-						priority
-					/>
-				</video>
+				<Image
+					src={HydrogenImg}
+					alt="Clean hydrogen production"
+					layout="fill"
+					objectFit="cover"
+					priority
+				/>
 			</div>
 
 			{/* Content */}
