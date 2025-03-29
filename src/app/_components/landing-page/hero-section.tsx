@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
 	return (
-		<section className="relative h-screen flex items-center">
+		<section className="relative h-[calc(100vh-80px)] xl:h-[700px] flex items-center">
 			{/* Background Image */}
 			<div className="absolute inset-0 z-0">
 				<div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10" />

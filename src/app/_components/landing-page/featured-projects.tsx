@@ -1,8 +1,10 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, TrendingDown, Zap } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 const FEATURED_PROJECTS = [
 	{
@@ -88,6 +90,12 @@ const FeaturedProjects = () => {
 					{FEATURED_PROJECTS.map((project, index) => (
 						<ProjectCard key={project.name} project={project} index={index} />
 					))}
+				</div>
+
+				<div className="text-center mt-12">
+					<Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+						<Link href="/projects">See all projects</Link>
+					</Button>
 				</div>
 			</div>
 		</section>

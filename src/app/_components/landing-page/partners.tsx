@@ -4,27 +4,33 @@ import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import AFDBLogo from "./_assets/afdb-logo.png";
+import GHALogo from "./_assets/gha-logo.jpg";
+import GreenEnergyLogo from "./_assets/green-energy-logo.jpg";
+import KenyaPowerLogo from "./_assets/kenya-power-logo.webp";
+import NNPCLogo from "./_assets/nnpc-logo.png";
+import SAEnergyLogo from "./_assets/sa-energy-logo.png";
 
 const Partners = () => {
 	const partners = [
 		{
 			name: "African Development Bank",
-			logo: "/images/partners/afdb-logo.png",
+			logo: AFDBLogo,
 		},
 		{
 			name: "Green Energy Solutions",
-			logo: "/images/partners/green-energy-logo.png",
+			logo: GreenEnergyLogo,
 		},
-		{ name: "Kenya Power", logo: "/images/partners/kenya-power-logo.png" },
+		{ name: "Kenya Power", logo: KenyaPowerLogo },
 		{
 			name: "Nigerian National Petroleum Corporation",
-			logo: "/images/partners/nnpc-logo.png",
+			logo: NNPCLogo,
 		},
 		{
 			name: "South African Energy Department",
-			logo: "/images/partners/sa-energy-logo.png",
+			logo: SAEnergyLogo,
 		},
-		{ name: "Global Hydrogen Alliance", logo: "/images/partners/gha-logo.png" },
+		{ name: "Global Hydrogen Alliance", logo: GHALogo },
 	];
 
 	return (
