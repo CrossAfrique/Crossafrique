@@ -13,25 +13,32 @@ import StorageTankImg from "../../_assets/images/storage-tank.jpg";
 const OurSolutions = () => {
 	const solutions = [
 		{
-			title: "Hydrogen Production",
+			title: "Integrated Energy Hubs",
 			description:
-				"Building state-of-the-art facilities to produce green hydrogen using Africa's abundant renewable energy resources.",
+				"We develop hubs combining multiple energy carriers—hydrogen, solar PV, battery storage—into coordinated, high-impact systems.",
 			image: ProductionDacilitiesImg,
-			alt: "Hydrogen production facility",
+			alt: "Integrated Energy Hubs",
 		},
 		{
-			title: "Storage & Distribution",
+			title: "Financial Structuring",
 			description:
-				"Developing innovative solutions for hydrogen storage and creating efficient distribution networks across the continent.",
+				"We design investment-ready projects with robust business models, using blended finance and private-public partnerships.",
 			image: StorageTankImg,
-			alt: "Hydrogen storage tanks",
+			alt: "Financial Structuring",
 		},
 		{
-			title: "Industrial Applications",
+			title: "Innovation & Research",
 			description:
-				"Implementing hydrogen technologies in industries, transportation, and power generation to reduce carbon emissions.",
+				"We collaborate with universities and technical partners to drive applied research and next-generation energy solutions.",
 			image: IndustrialApplicationImg,
-			alt: "Industrial hydrogen application",
+			alt: "Innovation & Research",
+		},
+		{
+			title: "System Architecture & Smart Control",
+			description:
+				"We implement digital control systems that ensure efficient energy flows and grid responsiveness.",
+			image: IndustrialApplicationImg,
+			alt: "System Architecture & Smart Control",
 		},
 	];
 
@@ -54,7 +61,7 @@ const OurSolutions = () => {
 					</p>
 				</motion.div>
 
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{solutions.map((solution, index) => (
 						<motion.div
 							key={solution.title}
