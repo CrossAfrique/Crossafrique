@@ -9,6 +9,85 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+const SOCIALS = [
+	{
+		label: "Facebook",
+		href: "https://www.facebook.com/",
+		icon: Facebook,
+	},
+	{
+		label: "Twitter",
+		href: "https://twitter.com/",
+		icon: Twitter,
+	},
+	{
+		label: "LinkedIn",
+		href: "https://www.linkedin.com/company/",
+		icon: Linkedin,
+	},
+	{
+		label: "Instagram",
+		href: "https://www.instagram.com/",
+		icon: Instagram,
+	},
+];
+
+const QUICK_LINKS = [
+	{
+		label: "Home",
+		href: "/",
+	},
+	{
+		label: "About Us",
+		href: "/about",
+	},
+	{
+		label: "Blog & Publications",
+		href: "/blog",
+	},
+	{
+		label: "Contact Us",
+		href: "/contact",
+	},
+];
+
+const SOLUTIONS = [
+	{
+		label: "Integrated Energy Hubs",
+		href: "/solutions/integrated-energy-hubs",
+	},
+	{
+		label: "Financial Structuring",
+		href: "/solutions/financial-structuring",
+	},
+	{
+		label: "Innovation & Research",
+		href: "/solutions/innovation-research",
+	},
+	{
+		label: "System Architecture & Smart Control",
+		href: "/solutions/system-architecture-smart-control",
+	},
+];
+
+const CONTACT_INFO = [
+	{
+		label: "Email",
+		href: "mailto:info@crossafriquehydrogen.com",
+		icon: Mail,
+	},
+	{
+		label: "Phone",
+		href: "tel:+254700000000",
+		icon: Phone,
+	},
+	{
+		label: "Address",
+		href: "https://www.google.com/maps/place/Crossafrique+Hydrogen/@-1.2833314,36.821934,15z/data=!4m6!3m5!1s0x0:0x4a152e4064d87e1c!8m2!3d-1.2833314!4d36.821934!16s%2Fg%2F11c2970_80?entry=ttu",
+		icon: MapPin,
+	},
+];
+
 const Footer = () => {
 	const currentYear = new Date().getFullYear();
 
@@ -20,35 +99,20 @@ const Footer = () => {
 					<div>
 						<h3 className="text-xl font-bold mb-4">🌍 Crossafrique Hydrogen</h3>
 						<p className="text-gray-400 mb-4">
-							Fueling Africa&#39;s Growth with Clean Hydrogen. We&#39;re
-							committed to developing sustainable hydrogen solutions across the
-							African continent.
+							We design and finance innovative energy hubs where hydrogen,
+							solar, storage, and smart technologies work together to deliver
+							real-world impact.
 						</p>
 						<div className="flex space-x-4">
-							<Link
-								href="#"
-								className="text-gray-400 hover:text-emerald-500 transition-colors"
-							>
-								<Facebook size={20} />
-							</Link>
-							<Link
-								href="#"
-								className="text-gray-400 hover:text-emerald-500 transition-colors"
-							>
-								<Twitter size={20} />
-							</Link>
-							<Link
-								href="#"
-								className="text-gray-400 hover:text-emerald-500 transition-colors"
-							>
-								<Linkedin size={20} />
-							</Link>
-							<Link
-								href="#"
-								className="text-gray-400 hover:text-emerald-500 transition-colors"
-							>
-								<Instagram size={20} />
-							</Link>
+							{SOCIALS.map((social) => (
+								<Link
+									key={social.label}
+									href={social.href}
+									className="text-gray-400 hover:text-emerald-500 transition-colors"
+								>
+									<social.icon size={20} />
+								</Link>
+							))}
 						</div>
 					</div>
 
@@ -56,38 +120,16 @@ const Footer = () => {
 					<div>
 						<h3 className="text-lg font-semibold mb-4">Quick Links</h3>
 						<ul className="space-y-2">
-							<li>
-								<Link
-									href="/"
-									className="text-gray-400 hover:text-emerald-500 transition-colors"
-								>
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/about"
-									className="text-gray-400 hover:text-emerald-500 transition-colors"
-								>
-									About Us
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/blog"
-									className="text-gray-400 hover:text-emerald-500 transition-colors"
-								>
-									Blog & Publications
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/contact"
-									className="text-gray-400 hover:text-emerald-500 transition-colors"
-								>
-									Contact Us
-								</Link>
-							</li>
+							{QUICK_LINKS.map((link) => (
+								<li key={link.label}>
+									<Link
+										href={link.href}
+										className="text-gray-400 hover:text-emerald-500 transition-colors"
+									>
+										{link.label}
+									</Link>
+								</li>
+							))}
 						</ul>
 					</div>
 
@@ -95,38 +137,16 @@ const Footer = () => {
 					<div>
 						<h3 className="text-lg font-semibold mb-4">Our Solutions</h3>
 						<ul className="space-y-2">
-							<li>
-								<Link
-									href="/solutions/green-hydrogen-production"
-									className="text-gray-400 hover:text-emerald-500 transition-colors"
-								>
-									Hydrogen Production
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/solutions/energy-storage"
-									className="text-gray-400 hover:text-emerald-500 transition-colors"
-								>
-									Storage & Distribution
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/solutions/industrial-applications"
-									className="text-gray-400 hover:text-emerald-500 transition-colors"
-								>
-									Industrial Applications
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/solutions/sustainable-agriculture"
-									className="text-gray-400 hover:text-emerald-500 transition-colors"
-								>
-									Sustainable Agriculture
-								</Link>
-							</li>
+							{SOLUTIONS.map((solution) => (
+								<li key={solution.label}>
+									<Link
+										href={solution.href}
+										className="text-gray-400 hover:text-emerald-500 transition-colors"
+									>
+										{solution.label}
+									</Link>
+								</li>
+							))}
 						</ul>
 					</div>
 
@@ -134,31 +154,20 @@ const Footer = () => {
 					<div>
 						<h3 className="text-lg font-semibold mb-4">Contact Us</h3>
 						<ul className="space-y-3">
-							<li className="flex items-start">
-								<MapPin
-									size={20}
-									className="text-emerald-500 mr-2 mt-1 flex-shrink-0"
-								/>
-								<span className="text-gray-400">
-									123 Clean Energy Way, Nairobi, Kenya
-								</span>
-							</li>
-							<li className="flex items-center">
-								<Phone
-									size={20}
-									className="text-emerald-500 mr-2 flex-shrink-0"
-								/>
-								<span className="text-gray-400">+254 123 456 789</span>
-							</li>
-							<li className="flex items-center">
-								<Mail
-									size={20}
-									className="text-emerald-500 mr-2 flex-shrink-0"
-								/>
-								<span className="text-gray-400">
-									info@crossafriquehydrogen.com
-								</span>
-							</li>
+							{CONTACT_INFO.map((contact) => (
+								<li key={contact.label} className="flex items-center">
+									<contact.icon
+										size={20}
+										className="text-emerald-500 mr-2 flex-shrink-0"
+									/>
+									<Link
+										href={contact.href}
+										className="text-gray-400 hover:text-emerald-500 transition-colors"
+									>
+										{contact.label}
+									</Link>
+								</li>
+							))}
 						</ul>
 					</div>
 				</div>
