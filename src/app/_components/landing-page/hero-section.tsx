@@ -30,8 +30,8 @@ const HeroSection = () => {
 						className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
 					>
 						<div>
-							Fueling Africa&#39;s Growth with{" "}
-							<span className="text-emerald-400">Clean Hydrogen</span>
+							Powering Sustainable Progress Through Integrated{" "}
+							<span className="text-emerald-400">Clean Energy Systems</span>
 						</div>
 					</FadeInY>
 					<FadeInY
@@ -39,8 +39,9 @@ const HeroSection = () => {
 						delay={0.2}
 						className="text-xl text-gray-200 mb-8"
 					>
-						Pioneering sustainable hydrogen solutions to power Africa&#39;s
-						future and drive economic growth while protecting our environment.
+						We design and finance innovative energy hubs where hydrogen, solar,
+						storage, and smart technologies work together to deliver real-world
+						impact.
 					</FadeInY>
 					<FadeInY delay={0.4} className="flex flex-col sm:flex-row gap-4">
 						<Button
@@ -48,7 +49,7 @@ const HeroSection = () => {
 							size="lg"
 							className="bg-emerald-600 hover:bg-emerald-700 text-white"
 						>
-							<Link href="#projects">Explore Our Projects</Link>
+							<Link href="#projects">Explore Our Work</Link>
 						</Button>
 						<Button
 							asChild
@@ -56,7 +57,7 @@ const HeroSection = () => {
 							variant="outline"
 							className="text-white bg-white/10 hover:text-white hover:bg-white/20"
 						>
-							<Link href="/about">Learn More</Link>
+							<Link href="/about">Partner With Us</Link>
 						</Button>
 					</FadeInY>
 				</div>

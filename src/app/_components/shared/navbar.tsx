@@ -63,9 +63,6 @@ const Navbar = () => {
 								className=""
 							/>
 						</div>
-						<span className="text-xl md:text-2xl font-bold text-emerald-600">
-							Crossafrique Hydrogen
-						</span>
 					</Link>
 
 					{/* Desktop Navigation */}
