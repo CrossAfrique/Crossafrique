@@ -1,19 +1,19 @@
 "use client";
 
-import BuildingSolutionImg from "@/app/_assets/images/building-solution.jpg";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import MobileSolutionImg from "@/app/_assets/images/mobile-solution.jpg";
 import ProductionFacilitiesImg from "@/app/_assets/images/production-facilities.jpg";
 import StorageTankImg from "@/app/_assets/images/storage-tank.jpg";
-import SustainableAgricultureImg from "@/app/_assets/images/sustainable-agriculture.jpeg";
+import Partners from "@/app/_components/landing-page/partners";
 import { Button } from "@/components/ui/button";
 import {
 	ArrowRight,
-	Building2,
+	BookOpen,
 	CheckCircle2,
 	Droplets,
 	Factory,
-	Leaf,
+	Home,
+	Recycle,
 	Truck,
 	Zap,
 } from "lucide-react";
@@ -21,13 +21,46 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
+const APPROACH = [
+	{
+		icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
+		title: "Assessment & Feasibility",
+		description:
+			"We conduct local energy assessments, demand analysis, and infrastructure reviews to identify appropriate energy carriers and technologies.",
+	},
+	{
+		icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
+		title: "System Design & Modelling",
+		description:
+			"Our team uses energy modeling and system architecture tools to design integrated, context-specific clean energy hubs.",
+	},
+	{
+		icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
+		title: "Financing & Structuring",
+		description:
+			"We work with partners to structure blended financing packages, combining grants, equity, concessional finance, and carbon credits.",
+	},
+	{
+		icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
+		title: "Deployment & Integration",
+		description:
+			"We coordinate project delivery and ensure seamless integration between carriers, control systems, and grid infrastructure.",
+	},
+	{
+		icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" />,
+		title: "Capacity Building & Optimization",
+		description:
+			"We train local teams, monitor performance, and adapt systems to ensure long-term technical and economic success.",
+	},
+];
+
 export default function SolutionsPage() {
 	const solutions = [
 		{
-			id: "green-hydrogen-production",
-			title: "Green Hydrogen Production",
+			id: "integrated-energy-hubs",
+			title: "Integrated Energy Hubs",
 			description:
-				"Renewable-powered electrolysis systems to produce clean hydrogen for various applications.",
+				"We design multi-carrier systems that combine hydrogen, solar energy, storage, and grid services into a unified energy architecture tailored to industrial, urban, and institutional applications.",
 			icon: <Zap className="w-10 h-10 text-emerald-600" />,
 			image: ProductionFacilitiesImg,
 			benefits: [
@@ -45,9 +78,9 @@ export default function SolutionsPage() {
 		},
 		{
 			id: "industrial-applications",
-			title: "Industrial Applications",
+			title: "Project Finance & Investment Structuring",
 			description:
-				"Hydrogen solutions for industrial processes, reducing emissions while maintaining productivity.",
+				"We create investment-ready business models and blended finance strategies to de-risk projects and attract public and private capital.",
 			icon: <Factory className="w-10 h-10 text-emerald-600" />,
 			image: IndustrialApplicationImg,
 			benefits: [
@@ -64,10 +97,10 @@ export default function SolutionsPage() {
 			],
 		},
 		{
-			id: "mobility-solutions",
-			title: "Mobility Solutions",
+			id: "applied-research-innovation",
+			title: "Applied Research & Innovation",
 			description:
-				"Hydrogen fuel cell vehicles and refueling infrastructure for clean transportation.",
+				"We work with research institutions and innovators to adapt advanced technologies to local needs—ensuring impact, relevance, and technical feasibility.",
 			icon: <Truck className="w-10 h-10 text-emerald-600" />,
 			image: MobileSolutionImg,
 			benefits: [
@@ -84,10 +117,10 @@ export default function SolutionsPage() {
 			],
 		},
 		{
-			id: "energy-storage",
-			title: "Energy Storage & Grid Services",
+			id: "smart-control-system-integration",
+			title: "Smart Control & System Integration",
 			description:
-				"Hydrogen-based energy storage systems to balance renewable generation and provide grid stability.",
+				"We deploy digital energy management platforms that optimize energy flows, maximize local consumption, and manage grid constraints across hubs.",
 			icon: <Droplets className="w-10 h-10 text-emerald-600" />,
 			image: StorageTankImg,
 			benefits: [
@@ -103,46 +136,6 @@ export default function SolutionsPage() {
 				"Grid balancing services",
 			],
 		},
-		{
-			id: "building-solutions",
-			title: "Building Solutions",
-			description:
-				"Hydrogen technologies for clean heating, cooling, and power in commercial and residential buildings.",
-			icon: <Building2 className="w-10 h-10 text-emerald-600" />,
-			image: BuildingSolutionImg,
-			benefits: [
-				"Reduced emissions from building operations",
-				"Combined heat and power capability",
-				"Energy resilience during grid outages",
-				"Potential for integration with renewable systems",
-			],
-			applications: [
-				"Commercial buildings",
-				"Residential developments",
-				"Institutional facilities",
-				"Hospitality sector",
-			],
-		},
-		{
-			id: "sustainable-agriculture",
-			title: "Sustainable Agriculture",
-			description:
-				"Hydrogen and ammonia solutions for clean fertilizer production and agricultural operations.",
-			icon: <Leaf className="w-10 h-10 text-emerald-600" />,
-			image: SustainableAgricultureImg,
-			benefits: [
-				"Locally produced green fertilizers",
-				"Reduced dependence on imported chemicals",
-				"Lower carbon footprint for agricultural sector",
-				"Support for food security initiatives",
-			],
-			applications: [
-				"Green ammonia production",
-				"Fertilizer manufacturing",
-				"Agricultural machinery",
-				"Food processing facilities",
-			],
-		},
 	];
 
 	return (
@@ -155,7 +148,7 @@ export default function SolutionsPage() {
 						transition={{ duration: 0.6 }}
 						className="text-4xl md:text-5xl font-bold mb-6"
 					>
-						Our Hydrogen Solutions
+						Our Solutions
 					</motion.h1>
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
@@ -163,8 +156,11 @@ export default function SolutionsPage() {
 						transition={{ duration: 0.6, delay: 0.2 }}
 						className="text-xl text-emerald-100 max-w-3xl mx-auto"
 					>
-						Comprehensive hydrogen technologies and services tailored for
-						African contexts, from production to end-use applications.
+						At CrossAfrique Hydrogen, we develop and finance integrated clean
+						energy systems that combine hydrogen, solar PV, battery storage, and
+						digital control platforms into cohesive, scalable energy hubs. Our
+						solutions are designed to meet local energy needs while enabling
+						industrial growth, sustainability, and climate resilience.
 					</motion.p>
 				</div>
 			</div>
@@ -179,7 +175,7 @@ export default function SolutionsPage() {
 							viewport={{ once: true }}
 							className="text-3xl font-bold mb-6 text-gray-900 dark:text-white"
 						>
-							Tailored Hydrogen Solutions for Africa
+							What We Deliver
 						</motion.h2>
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
@@ -188,13 +184,13 @@ export default function SolutionsPage() {
 							viewport={{ once: true }}
 							className="text-lg text-gray-700 dark:text-gray-300"
 						>
-							We develop and implement hydrogen technologies specifically
-							designed for African conditions and requirements, addressing local
-							challenges while maximizing economic and environmental benefits.
+							We offer end-to-end services—from opportunity assessment and
+							project structuring to deployment, financing, and long-term
+							optimization.
 						</motion.p>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-max mx-auto">
 						{solutions.map((solution, index) => (
 							<motion.div
 								key={solution.id}
@@ -236,6 +232,69 @@ export default function SolutionsPage() {
 				</div>
 			</section>
 
+			<section className="py-16 bg-gray-100 dark:bg-gray-850">
+				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+					<div className="max-w-3xl mx-auto text-center mb-12">
+						<motion.h2
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.6 }}
+							viewport={{ once: true }}
+							className="text-3xl font-bold mb-6 text-gray-900 dark:text-white"
+						>
+							Our Solutions Are Designed For
+						</motion.h2>
+					</div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6, delay: 0.2 }}
+						viewport={{ once: true }}
+						className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
+					>
+						{[
+							{
+								title: "Industrial zones and production facilities",
+								icon: <Factory className="w-8 h-8 text-emerald-600" />,
+							},
+							{
+								title: "Universities and research campuses",
+								icon: <BookOpen className="w-8 h-8 text-emerald-600" />,
+							},
+							{
+								title: "Off-grid communities and remote regions",
+								icon: <Home className="w-8 h-8 text-emerald-600" />,
+							},
+							{
+								title: "Transport & logistics hubs",
+								icon: <Truck className="w-8 h-8 text-emerald-600" />,
+							},
+							{
+								title: "Circular economy and agri-processing zones",
+								icon: <Recycle className="w-8 h-8 text-emerald-600" />,
+							},
+						].map((item, index) => (
+							<motion.div
+								key={item.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.5, delay: index * 0.1 }}
+								viewport={{ once: true }}
+								className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center"
+							>
+								<div className="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mb-4">
+									{item.icon}
+								</div>
+								<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+									{item.title}
+								</h3>
+							</motion.div>
+						))}
+					</motion.div>
+				</div>
+			</section>
+
 			<section className="py-16 bg-gray-50 dark:bg-gray-800">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -246,92 +305,30 @@ export default function SolutionsPage() {
 							viewport={{ once: true }}
 						>
 							<h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-								Our Approach to Solution Development
+								Our Approach
 							</h2>
 							<p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-								We follow a comprehensive process to ensure our hydrogen
-								solutions are effective, sustainable, and aligned with local
-								needs and conditions.
+								We follow a comprehensive process to ensure our energy solutions
+								are effective, sustainable, and aligned with local needs and
+								conditions.
 							</p>
 
 							<div className="space-y-4">
-								<div className="flex items-start">
-									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-2 rounded-full mr-4 mt-1">
-										<CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+								{APPROACH.map((step) => (
+									<div key={step.title} className="flex items-start">
+										<div className="bg-emerald-100 dark:bg-emerald-900/50 p-2 rounded-full mr-4 mt-1">
+											{step.icon}
+										</div>
+										<div>
+											<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+												{step.title}
+											</h3>
+											<p className="text-gray-700 dark:text-gray-300">
+												{step.description}
+											</p>
+										</div>
 									</div>
-									<div>
-										<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-											Assessment & Analysis
-										</h3>
-										<p className="text-gray-700 dark:text-gray-300">
-											We conduct thorough assessments of local conditions,
-											resources, and requirements to identify the most suitable
-											hydrogen solutions.
-										</p>
-									</div>
-								</div>
-
-								<div className="flex items-start">
-									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-2 rounded-full mr-4 mt-1">
-										<CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-									</div>
-									<div>
-										<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-											Customized Design
-										</h3>
-										<p className="text-gray-700 dark:text-gray-300">
-											Our engineering team develops tailored solutions that
-											address specific challenges and maximize local advantages.
-										</p>
-									</div>
-								</div>
-
-								<div className="flex items-start">
-									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-2 rounded-full mr-4 mt-1">
-										<CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-									</div>
-									<div>
-										<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-											Implementation & Integration
-										</h3>
-										<p className="text-gray-700 dark:text-gray-300">
-											We manage the deployment process, ensuring seamless
-											integration with existing systems and infrastructure.
-										</p>
-									</div>
-								</div>
-
-								<div className="flex items-start">
-									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-2 rounded-full mr-4 mt-1">
-										<CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-									</div>
-									<div>
-										<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-											Training & Capacity Building
-										</h3>
-										<p className="text-gray-700 dark:text-gray-300">
-											We provide comprehensive training for local personnel to
-											ensure effective operation and maintenance of hydrogen
-											systems.
-										</p>
-									</div>
-								</div>
-
-								<div className="flex items-start">
-									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-2 rounded-full mr-4 mt-1">
-										<CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-									</div>
-									<div>
-										<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-											Ongoing Support & Optimization
-										</h3>
-										<p className="text-gray-700 dark:text-gray-300">
-											Our team provides continuous support and performance
-											monitoring to optimize system operation and address
-											evolving needs.
-										</p>
-									</div>
-								</div>
+								))}
 							</div>
 						</motion.div>
 
@@ -363,7 +360,7 @@ export default function SolutionsPage() {
 							viewport={{ once: true }}
 							className="text-3xl font-bold mb-6"
 						>
-							Ready to Explore Hydrogen Solutions?
+							Work With Us
 						</motion.h2>
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
@@ -372,9 +369,10 @@ export default function SolutionsPage() {
 							viewport={{ once: true }}
 							className="text-lg text-emerald-100 mb-8"
 						>
-							Contact our team to discuss how our hydrogen technologies can
-							address your specific needs and contribute to a cleaner, more
-							sustainable future.
+							Are you ready to develop an integrated clean energy system
+							tailored to your needs? Whether you are a government partner,
+							research institution, developer, or investor—we can help design
+							and implement systems that create lasting value.
 						</motion.p>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -393,7 +391,7 @@ export default function SolutionsPage() {
 							</Link>
 							<Link href="/projects">
 								<Button size="lg" variant="secondary">
-									View Our Projects
+									Explore Our Projects
 								</Button>
 							</Link>
 						</motion.div>
@@ -508,53 +506,7 @@ export default function SolutionsPage() {
 				</div>
 			</section>
 
-			<section className="py-16 bg-gray-50 dark:bg-gray-800">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-3xl mx-auto text-center mb-12">
-						<motion.h2
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.6 }}
-							viewport={{ once: true }}
-							className="text-3xl font-bold mb-6 text-gray-900 dark:text-white"
-						>
-							Our Partners
-						</motion.h2>
-						<motion.p
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.6, delay: 0.2 }}
-							viewport={{ once: true }}
-							className="text-lg text-gray-700 dark:text-gray-300"
-						>
-							We collaborate with leading organizations to deliver comprehensive
-							hydrogen solutions.
-						</motion.p>
-					</div>
-
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6 }}
-						viewport={{ once: true }}
-						className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center"
-					>
-						{[1, 2, 3, 4, 5, 6].map((partner) => (
-							<div key={partner} className="flex justify-center">
-								<div className="bg-white dark:bg-gray-700 p-4 rounded-lg w-full h-24 flex items-center justify-center">
-									<Image
-										src={`/images/partners/partner-${partner}.svg`}
-										alt={`Partner ${partner}`}
-										width={120}
-										height={60}
-										className="max-h-12 w-auto"
-									/>
-								</div>
-							</div>
-						))}
-					</motion.div>
-				</div>
-			</section>
+			<Partners />
 		</div>
 	);
 }
