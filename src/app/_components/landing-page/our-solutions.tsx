@@ -61,7 +61,7 @@ const OurSolutions = () => {
 					</p>
 				</motion.div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-max mx-auto">
 					{solutions.map((solution, index) => (
 						<motion.div
 							key={solution.title}
@@ -69,6 +69,7 @@ const OurSolutions = () => {
 							whileInView={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6, delay: index * 0.2 }}
 							viewport={{ once: true }}
+							className="max-w-[500px]"
 						>
 							<Card className="overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 p-0">
 								<div className="relative h-60">

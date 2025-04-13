@@ -8,61 +8,23 @@ import Link from "next/link";
 
 const FEATURED_PROJECTS = [
 	{
-		name: "Nairobi Green Hydrogen Hub",
-		location: "Kenya",
+		name: "Covenant Green Energy Hub",
+		location: "Nigeria",
 		description:
-			"A large-scale green hydrogen production facility powered by solar and wind energy, supplying clean hydrogen to industrial users in East Africa.",
+			"A research and industrial hydrogen hub integrating solar, electrolysis, and recycled water use in partnership with academia and industry.",
 		metrics: [
 			{
 				icon: <Zap className="w-5 h-5 text-emerald-600" />,
-				label: "Energy Output",
-				value: "50 MW",
+				label: "Output",
+				value: "1 MW electrolyzer",
 			},
 			{
 				icon: <TrendingDown className="w-5 h-5 text-emerald-600" />,
-				label: "CO₂ Reduction",
-				value: "75,000 tons/year",
-			},
-		],
-		status: "Operational",
-	},
-	{
-		name: "West African Hydrogen Corridor",
-		location: "Multiple Countries",
-		description:
-			"A cross-border hydrogen distribution network connecting production facilities with industrial centers across West Africa.",
-		metrics: [
-			{
-				icon: <Zap className="w-5 h-5 text-emerald-600" />,
-				label: "Network Length",
-				value: "1,200 km",
-			},
-			{
-				icon: <TrendingDown className="w-5 h-5 text-emerald-600" />,
-				label: "CO₂ Reduction",
-				value: "120,000 tons/year",
+				label: "Key Feature",
+				value: "Academic-industrial collaboration",
 			},
 		],
 		status: "In Development",
-	},
-	{
-		name: "South African Mining Hydrogen Project",
-		location: "South Africa",
-		description:
-			"Converting mining operations to use hydrogen-powered equipment and vehicles, reducing emissions in the mining sector.",
-		metrics: [
-			{
-				icon: <Zap className="w-5 h-5 text-emerald-600" />,
-				label: "Hydrogen Supply",
-				value: "25 tons/day",
-			},
-			{
-				icon: <TrendingDown className="w-5 h-5 text-emerald-600" />,
-				label: "CO₂ Reduction",
-				value: "50,000 tons/year",
-			},
-		],
-		status: "Planning Phase",
 	},
 ];
 
@@ -86,10 +48,37 @@ const FeaturedProjects = () => {
 					</p>
 				</motion.div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-max mx-auto">
 					{FEATURED_PROJECTS.map((project, index) => (
 						<ProjectCard key={project.name} project={project} index={index} />
 					))}
+
+					{/* Placeholder for upcoming projects */}
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6, delay: 0.2 }}
+						viewport={{ once: true }}
+						className="max-w-[500px]"
+					>
+						<Card className="h-full border-dashed border-2 flex flex-col justify-center items-center text-center p-0">
+							<CardHeader className="w-full">
+								<CardTitle className="text-xl font-semibold">
+									More Projects Coming Soon
+								</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<p className="text-gray-700 dark:text-gray-300 mb-6">
+									We&#39;re expanding our portfolio of hydrogen initiatives
+									across Africa. Stay tuned for updates or reach out to discuss
+									collaboration opportunities.
+								</p>
+								<Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+									<Link href="/contact">Contact Us</Link>
+								</Button>
+							</CardContent>
+						</Card>
+					</motion.div>
 				</div>
 
 				<div className="text-center mt-12">
@@ -115,6 +104,7 @@ function ProjectCard({
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.6, delay: index * 0.2 }}
 			viewport={{ once: true }}
+			className="max-w-[500px]"
 		>
 			<Card className="h-full hover:shadow-lg transition-shadow duration-300">
 				<CardHeader>
