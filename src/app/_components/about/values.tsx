@@ -6,49 +6,48 @@ import { motion } from "motion/react";
 const Values = () => {
 	const values = [
 		{
-			id: "sustainability",
-			icon: <Leaf className="w-10 h-10 text-emerald-600" />,
-			title: "Sustainability",
+			id: "innovation",
+			icon: <Sparkles className="w-10 h-10 text-emerald-600" />,
+			title: "Innovation with Purpose",
 			description:
-				"We prioritize environmental stewardship in all our operations, ensuring our solutions contribute to a healthier planet.",
+				"We turn cutting-edge research into deployable energy infrastructure that works.",
 		},
 		{
-			id: "innovation",
-			icon: <Lightbulb className="w-10 h-10 text-emerald-600" />,
-			title: "Innovation",
+			id: "financial-discipline",
+			icon: <Scale className="w-10 h-10 text-emerald-600" />,
+			title: "Financial Discipline",
 			description:
-				"We constantly seek new approaches and technologies to overcome challenges and maximize hydrogen's potential in Africa.",
+				"We develop bankable projects that attract capital and ensure long-term sustainability.",
+		},
+		{
+			id: "systems-thinking",
+			icon: <Lightbulb className="w-10 h-10 text-emerald-600" />,
+			title: "Systems Thinking",
+			description:
+				"We design flexible, multi-carrier energy systems that work together—not in silos.",
 		},
 		{
 			id: "collaboration",
 			icon: <Users className="w-10 h-10 text-emerald-600" />,
-			title: "Collaboration",
+			title: "Collaboration & Partnership",
 			description:
-				"We believe in the power of partnerships to achieve greater impact and accelerate the transition to clean energy.",
+				"We build trust-based partnerships with technical experts, investors, institutions, and communities.",
 		},
 		{
-			id: "local-impact",
+			id: "context-driven-impact",
 			icon: <Globe className="w-10 h-10 text-emerald-600" />,
-			title: "Local Impact",
+			title: "Context-Driven Impact",
 			description:
-				"We design solutions that address specific needs of African communities and create opportunities for local development.",
-		},
-		{
-			id: "excellence",
-			icon: <Sparkles className="w-10 h-10 text-emerald-600" />,
-			title: "Excellence",
-			description:
-				"We strive for the highest standards in our work, from technical implementation to stakeholder engagement.",
+				"Our solutions are grounded in real needs—local realities, industrial demand, and social outcomes.",
 		},
 		{
 			id: "integrity",
-			icon: <Scale className="w-10 h-10 text-emerald-600" />,
-			title: "Integrity",
+			icon: <Leaf className="w-10 h-10 text-emerald-600" />,
+			title: "Integrity & Transparency",
 			description:
-				"We conduct our business ethically and transparently, building trust with all our stakeholders.",
+				"We operate with accountability and responsibility across every project and partnership.",
 		},
 	];
-
 	return (
 		<section className="py-20 bg-white dark:bg-gray-900">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +63,7 @@ const Values = () => {
 					</h2>
 					<p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
 						These core principles guide our work and shape our approach to
-						developing hydrogen solutions for Africa.
+						developing energy solutions.
 					</p>
 				</motion.div>
 
