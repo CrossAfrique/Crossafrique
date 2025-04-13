@@ -1,37 +1,37 @@
 "use client";
 
-import { Factory, Leaf, TrendingUp, Zap } from "lucide-react";
+import { Building2, Globe, Lightbulb, Users } from "lucide-react";
 import { motion } from "motion/react";
 
-const WhyHydrogen = () => {
+const WhyEnergySystem = () => {
 	const benefits = [
 		{
 			id: "benefit-1",
-			icon: <Leaf className="w-10 h-10 text-emerald-600" />,
-			title: "Environmentally Friendly",
+			icon: <Lightbulb className="w-10 h-10 text-emerald-600" />,
+			title: "Strategic Innovation",
 			description:
-				"Zero carbon emissions when produced from renewable sources, helping Africa meet climate goals.",
+				"We create flexible energy hubs using smart combinations of hydrogen, solar, batteries, and control systems.",
 		},
 		{
 			id: "benefit-2",
-			icon: <Zap className="w-10 h-10 text-emerald-600" />,
-			title: "Energy Independence",
+			icon: <Building2 className="w-10 h-10 text-emerald-600" />,
+			title: "Bankable Infrastructure",
 			description:
-				"Reduces reliance on imported fossil fuels, enhancing energy security across the continent.",
+				"We design financially viable projects that attract investment through blended finance and structured models.",
 		},
 		{
 			id: "benefit-3",
-			icon: <TrendingUp className="w-10 h-10 text-emerald-600" />,
-			title: "Economic Growth",
+			icon: <Users className="w-10 h-10 text-emerald-600" />,
+			title: "Local Impact",
 			description:
-				"Creates new industries and thousands of jobs while attracting international investment.",
+				"We develop solutions grounded in context—tailored to regional needs, job creation, and industrial growth.",
 		},
 		{
 			id: "benefit-4",
-			icon: <Factory className="w-10 h-10 text-emerald-600" />,
-			title: "Industrial Applications",
+			icon: <Globe className="w-10 h-10 text-emerald-600" />,
+			title: "Climate Resilience",
 			description:
-				"Powers everything from transportation to manufacturing, enabling clean industrial development.",
+				"We reduce emissions and enhance energy independence through decarbonized, distributed energy systems.",
 		},
 	];
 
@@ -65,7 +65,7 @@ const WhyHydrogen = () => {
 						viewport={{ once: true }}
 						className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white"
 					>
-						Why Hydrogen for Africa?
+						Why Integrated Energy Systems?
 					</motion.h2>
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
@@ -108,4 +108,4 @@ const WhyHydrogen = () => {
 	);
 };
 
-export default WhyHydrogen;
+export default WhyEnergySystem;
