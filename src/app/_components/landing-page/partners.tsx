@@ -44,11 +44,12 @@ const Partners = () => {
 					className="text-center mb-16"
 				>
 					<h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-						Our Partners & Investors
+						Our Partners & Network
 					</h2>
 					<p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-						We collaborate with leading organizations across Africa and globally
-						to accelerate the hydrogen economy.
+						We work alongside technical partners, universities, governments, and
+						development institutions to build practical, future-ready energy
+						systems. Collaboration is at the heart of our mission.
 					</p>
 				</motion.div>
 
