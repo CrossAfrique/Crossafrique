@@ -9,31 +9,17 @@ const getBlogPost = (id: string) => {
 	const posts = [
 		{
 			id: "1",
-			title: "The Future of Green Hydrogen in Africa",
+			title: "Why Hydrogen Is Only Part of the Answer",
 			content: `
-        <p>Africa stands at a pivotal moment in its energy development. With abundant renewable resources and growing energy demands, the continent has a unique opportunity to leapfrog traditional fossil fuel infrastructure and embrace clean hydrogen as a cornerstone of its energy future.</p>
-        
-        <h2>The Renewable Advantage</h2>
-        <p>Africa possesses some of the world's best renewable energy resources. The continent receives more hours of sunshine than any other region, with vast areas experiencing solar irradiation levels that are ideal for solar power generation. Additionally, many coastal regions offer excellent wind resources, while the continent's rivers provide significant hydroelectric potential.</p>
-        <p>These renewable resources can power electrolyzers to split water into hydrogen and oxygen, producing green hydrogen without any carbon emissions. This approach aligns perfectly with global decarbonization efforts while addressing Africa's energy needs.</p>
-        
-        <h2>Economic Opportunities</h2>
-        <p>Beyond environmental benefits, green hydrogen presents substantial economic opportunities for African nations. The hydrogen economy could create thousands of jobs across the value chain, from production and storage to distribution and end-use applications.</p>
-        <p>Furthermore, as developed economies seek to import clean hydrogen, African countries with abundant renewable resources could become major exporters, generating significant revenue and improving trade balances.</p>
-        
-        <h2>Challenges to Overcome</h2>
-        <p>Despite its promise, several challenges must be addressed to realize Africa's hydrogen potential:</p>
-        <ul>
-          <li>Infrastructure development requires significant investment</li>
-          <li>Technical expertise and skilled workforce need development</li>
-          <li>Regulatory frameworks must be established to support the hydrogen economy</li>
-          <li>Initial costs remain high, though they are falling rapidly</li>
-        </ul>
-        
-        <h2>The Path Forward</h2>
-        <p>At Crossafrique Hydrogen, we're working to overcome these challenges through strategic partnerships, investment in local capacity building, and advocacy for supportive policy frameworks. Our projects across the continent demonstrate the viability of hydrogen solutions tailored to African contexts.</p>
-        <p>By embracing green hydrogen today, African nations can secure energy independence, create economic opportunities, and lead in the global transition to clean energy. The future of green hydrogen in Africa is not just promising—it's essential for sustainable development across the continent.</p>
-      `,
+				<p>As the global energy sector accelerates its transition to cleaner, more resilient sources, hydrogen has emerged as a promising solution. From decarbonizing industry to fueling mobility, hydrogen offers a versatile pathway to reduce emissions. But while its potential is significant, hydrogen alone is not the silver bullet.</p>
+				
+				<p>Clean energy systems cannot succeed in silos. What is needed is a systems-level approach—one that integrates hydrogen with other energy carriers such as solar power, battery storage, and intelligent control platforms. Only then can we build flexible, reliable, and efficient systems capable of addressing the complex challenges of modern energy demand.</p>
+				<p>For example, solar power provides abundant, zero-emission electricity but is intermittent. Hydrogen can store this energy long-term, but conversion processes can be costly and inefficient without scale. Battery systems help balance short-term fluctuations and stabilize grids, while digital control technologies enable real-time optimization of supply and demand across all components.</p>
+				
+				<p>When these elements work together, they unlock greater value than any single solution alone. An integrated hub may use solar to generate electricity, charge batteries for immediate use, and divert excess power to produce green hydrogen. Smart control systems ensure seamless coordination, while flexible design enables adaptation to local needs—whether in an urban industrial park or a remote off-grid community.</p>
+
+				<p>At CrossAfrique Hydrogen, we believe that true energy resilience comes from connection. Hydrogen is a critical piece of the puzzle, but the future lies in systems that are designed to collaborate, not compete. Through integrated planning, financial structuring, and innovation, we aim to turn isolated technologies into unified solutions—powering sustainable development at scale.</p>
+      		`,
 			image: "/images/blog/green-hydrogen-africa.jpg",
 			date: "May 15, 2023",
 			author: "Dr. Sarah Kimani",
