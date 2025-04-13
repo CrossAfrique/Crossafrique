@@ -16,7 +16,7 @@ const CTASection = () => {
 						viewport={{ once: true }}
 						className="text-3xl md:text-4xl font-bold mb-6"
 					>
-						Discover How We&apos;re Powering Africa&apos;s Future
+						Discover How We&apos;re Powering the Future
 					</motion.h2>
 
 					<motion.p
@@ -26,10 +26,10 @@ const CTASection = () => {
 						viewport={{ once: true }}
 						className="text-xl mb-8 text-emerald-100"
 					>
-						Join us in building a sustainable, hydrogen-powered future for
-						Africa. Whether you&apos;re interested in our projects, looking to
-						partner with us, or want to learn more about clean hydrogen
-						solutions, we&apos;re here to help.
+						Whether you are a potential partner, investor, or innovator—join us
+						in building systems that move beyond pilots and promises. We are
+						creating the blueprint for scalable, integrated energy in emerging
+						markets and industrial regions alike.
 					</motion.p>
 
 					<motion.div
@@ -44,7 +44,7 @@ const CTASection = () => {
 							size="lg"
 							className="bg-white text-emerald-700 hover:bg-emerald-100"
 						>
-							<Link href="/about">Learn More About Us</Link>
+							<Link href="/about">Learn More</Link>
 						</Button>
 						<Button
 							asChild
@@ -52,7 +52,7 @@ const CTASection = () => {
 							variant="outline"
 							className="text-emerald-700 bg-transparent text-white border-white hover:text-white hover:bg-white/10"
 						>
-							<Link href="/contact">Get in Touch</Link>
+							<Link href="/contact">Contact Us</Link>
 						</Button>
 					</motion.div>
 				</div>
