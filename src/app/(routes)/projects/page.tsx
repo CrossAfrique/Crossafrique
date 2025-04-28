@@ -15,7 +15,7 @@ export default function ProjectsPage() {
 			description:
 				"An innovation-led hydrogen hub integrating solar PV with a electrolyzer and recycled wastewater system, designed to power research, pilot industrial applications, and local skill development.",
 			image: "/images/projects/rwanda-facility.jpg",
-			location: "Ota, Nigeria",
+			location: "Nigeria",
 			status: "Planning Phase",
 			year: "2025",
 		},

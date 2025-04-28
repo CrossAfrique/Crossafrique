@@ -53,16 +53,14 @@ const Navbar = () => {
 		>
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between h-16 md:h-20">
-					<Link href="/" className="flex items-center relative -left-8">
-						<div className=" clip-logo">
-							<Image
-								src={CrossAfriqueImg}
-								alt="Crossarique"
-								width={100}
-								height={100}
-								className=""
-							/>
-						</div>
+					<Link href="/" className="flex items-center relative -left-4">
+						<Image
+							src={CrossAfriqueImg}
+							alt="Crossarique"
+							width={180}
+							height={150}
+							className="object-contain"
+						/>
 					</Link>
 
 					{/* Desktop Navigation */}

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const FEATURED_PROJECTS = [
 	{
-		name: "Covenant Green Energy Hub",
+		name: "Green Energy Hub",
 		location: "Nigeria",
 		description:
 			"A research and industrial hydrogen hub integrating solar, electrolysis, and recycled water use in partnership with academia and industry.",
