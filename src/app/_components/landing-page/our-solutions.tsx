@@ -6,9 +6,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import EnergyHubImg from "../../_assets/images/energy-hub.jpg";
+import FinancialStructuringImg from "../../_assets/images/financial-structuring.jpg";
 import IndustrialApplicationImg from "../../_assets/images/industrial-application.jpg";
-import ProductionDacilitiesImg from "../../_assets/images/production-facilities.jpg";
-import StorageTankImg from "../../_assets/images/storage-tank.jpg";
+import SystemArchitectureImg from "../../_assets/images/system-architecture.jpg";
 
 const OurSolutions = () => {
 	const solutions = [
@@ -16,14 +17,14 @@ const OurSolutions = () => {
 			title: "Integrated Energy Hubs",
 			description:
 				"We develop hubs combining multiple energy carriers—hydrogen, solar PV, battery storage—into coordinated, high-impact systems.",
-			image: ProductionDacilitiesImg,
+			image: EnergyHubImg,
 			alt: "Integrated Energy Hubs",
 		},
 		{
 			title: "Financial Structuring",
 			description:
 				"We design investment-ready projects with robust business models, using blended finance and private-public partnerships.",
-			image: StorageTankImg,
+			image: FinancialStructuringImg,
 			alt: "Financial Structuring",
 		},
 		{
@@ -37,7 +38,7 @@ const OurSolutions = () => {
 			title: "System Architecture & Smart Control",
 			description:
 				"We implement digital control systems that ensure efficient energy flows and grid responsiveness.",
-			image: IndustrialApplicationImg,
+			image: SystemArchitectureImg,
 			alt: "System Architecture & Smart Control",
 		},
 	];
