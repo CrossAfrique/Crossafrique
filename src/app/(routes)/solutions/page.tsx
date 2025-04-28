@@ -1,16 +1,16 @@
 "use client";
 
+import EnergyHubImg from "@/app/_assets/images/energy-hub.jpg";
+import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
-import MobileSolutionImg from "@/app/_assets/images/mobile-solution.jpg";
-import ProductionFacilitiesImg from "@/app/_assets/images/production-facilities.jpg";
-import StorageTankImg from "@/app/_assets/images/storage-tank.jpg";
+import SystemArchitectureImg from "@/app/_assets/images/system-architecture.jpg";
 import Partners from "@/app/_components/landing-page/partners";
 import { Button } from "@/components/ui/button";
 import {
 	ArrowRight,
 	BookOpen,
+	ChartArea,
 	CheckCircle2,
-	Droplets,
 	Factory,
 	Home,
 	Recycle,
@@ -60,80 +60,80 @@ export default function SolutionsPage() {
 			id: "integrated-energy-hubs",
 			title: "Integrated Energy Hubs",
 			description:
-				"We design multi-carrier systems that combine hydrogen, solar energy, storage, and grid services into a unified energy architecture tailored to industrial, urban, and institutional applications.",
+				"We develop hubs combining multiple energy carriers—hydrogen, solar PV, battery storage—into coordinated, high-impact systems.",
 			icon: <Zap className="w-10 h-10 text-emerald-600" />,
-			image: ProductionFacilitiesImg,
+			image: EnergyHubImg,
 			benefits: [
-				"Zero-emission hydrogen production",
+				"Zero-emission energy production",
 				"Scalable from small to utility-scale",
 				"Leverages Africa's abundant renewable resources",
-				"Flexible operation to match renewable generation",
+				"Integrated systems for maximum efficiency",
 			],
 			applications: [
-				"Industrial feedstock",
-				"Energy storage",
-				"Fuel for transportation",
-				"Power generation",
+				"Industrial zones",
+				"Commercial complexes",
+				"Community energy systems",
+				"Off-grid applications",
 			],
 		},
 		{
-			id: "industrial-applications",
-			title: "Project Finance & Investment Structuring",
+			id: "financial-structuring",
+			title: "Financial Structuring",
 			description:
-				"We create investment-ready business models and blended finance strategies to de-risk projects and attract public and private capital.",
-			icon: <Factory className="w-10 h-10 text-emerald-600" />,
-			image: IndustrialApplicationImg,
+				"We design investment-ready projects with robust business models, using blended finance and private-public partnerships.",
+			icon: <ChartArea className="w-10 h-10 text-emerald-600" />,
+			image: FinancialStructuringImg,
 			benefits: [
-				"Reduced carbon footprint for industrial operations",
-				"Potential cost savings compared to imported fuels",
-				"Improved energy security and reliability",
-				"Compliance with emerging carbon regulations",
+				"Reduced investment risk",
+				"Access to diverse funding sources",
+				"Sustainable business models",
+				"Optimized return on investment",
 			],
 			applications: [
-				"Mining operations",
-				"Manufacturing processes",
-				"Chemical production",
-				"Food processing",
+				"Public-private partnerships",
+				"Blended finance projects",
+				"Carbon credit monetization",
+				"Impact investment opportunities",
 			],
 		},
 		{
 			id: "applied-research-innovation",
-			title: "Applied Research & Innovation",
+			title: "Innovation & Research",
 			description:
-				"We work with research institutions and innovators to adapt advanced technologies to local needs—ensuring impact, relevance, and technical feasibility.",
-			icon: <Truck className="w-10 h-10 text-emerald-600" />,
-			image: MobileSolutionImg,
+				"We collaborate with universities and technical partners to drive applied research and next-generation energy solutions.",
+			icon: <BookOpen className="w-10 h-10 text-emerald-600" />,
+			image: IndustrialApplicationImg,
 			benefits: [
-				"Zero-emission transportation",
-				"Fast refueling times compared to battery electric",
-				"Long range capability",
-				"Suitable for heavy-duty applications",
+				"Access to cutting-edge technologies",
+				"Knowledge transfer and capacity building",
+				"Locally adapted solutions",
+				"Continuous improvement and innovation",
 			],
 			applications: [
-				"Public transportation buses",
-				"Commercial vehicle fleets",
-				"Heavy-duty trucks",
-				"Material handling equipment",
+				"University research partnerships",
+				"Technology demonstration projects",
+				"Innovation hubs and incubators",
+				"Technical training programs",
 			],
 		},
 		{
-			id: "smart-control-system-integration",
-			title: "Smart Control & System Integration",
+			id: "system-architecture-and-smart-control",
+			title: "System Architecture & Smart Control",
 			description:
-				"We deploy digital energy management platforms that optimize energy flows, maximize local consumption, and manage grid constraints across hubs.",
-			icon: <Droplets className="w-10 h-10 text-emerald-600" />,
-			image: StorageTankImg,
+				"We implement digital control systems that ensure efficient energy flows and grid responsiveness.",
+			icon: <Factory className="w-10 h-10 text-emerald-600" />,
+			image: SystemArchitectureImg,
 			benefits: [
-				"Long-duration energy storage capability",
-				"Seasonal storage potential",
-				"Grid stabilization services",
-				"Integration with existing gas infrastructure",
+				"Optimized energy flows",
+				"Real-time monitoring and control",
+				"Predictive maintenance capabilities",
+				"Enhanced system reliability",
 			],
 			applications: [
-				"Renewable energy integration",
-				"Microgrids and off-grid systems",
-				"Backup power systems",
-				"Grid balancing services",
+				"Smart grid integration",
+				"Energy management systems",
+				"Demand response solutions",
+				"Digital twin modeling",
 			],
 		},
 	];
