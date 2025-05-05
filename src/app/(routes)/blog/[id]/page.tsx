@@ -21,11 +21,23 @@ const getBlogPost = (id: string) => {
 				<p>At CrossAfrique Hydrogen, we believe that true energy resilience comes from connection. Hydrogen is a critical piece of the puzzle, but the future lies in systems that are designed to collaborate, not compete. Through integrated planning, financial structuring, and innovation, we aim to turn isolated technologies into unified solutions—powering sustainable development at scale.</p>
       		`,
 			image: "/images/blog/green-hydrogen-africa.jpg",
-			date: "May 15, 2023",
+			date: "April 2025",
 			author: "Dr. Sarah Kimani",
-			authorTitle: "Chief Technology Officer",
+			authorTitle: "Chief Executive Officer",
 			authorImage: "/images/team/sarah-kimani.jpg",
 			category: "Clean Energy & Sustainability",
+		},
+		{
+			id: "2",
+			title: "Designing Bankable Energy Systems in Emerging Markets",
+			content:
+				"Exploring how financial innovation and blended capital can unlock investment in hydrogen and multi-carrier infrastructure.",
+			image: "/images/blog/hydrogen-storage.jpg",
+			date: "April 2025",
+			author: "Joshua Dauda",
+			authorTitle: "Chief Executive Officer",
+			authorImage: "/images/team/sarah-kimani.jpg",
+			category: "Finance and Project Development",
 		},
 	];
 
@@ -133,7 +145,7 @@ export default async function BlogPostPage(props: {
 										Innovative Storage Solutions for Hydrogen
 									</h4>
 									<p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-										April 22, 2023
+										April 2025
 									</p>
 								</Link>
 								<Link
@@ -144,18 +156,7 @@ export default async function BlogPostPage(props: {
 										Policy Frameworks for Hydrogen Development in East Africa
 									</h4>
 									<p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-										March 10, 2023
-									</p>
-								</Link>
-								<Link
-									href="/blog/4"
-									className="block p-4 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-shadow"
-								>
-									<h4 className="font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-										Hydrogen-Powered Transportation in Urban Africa
-									</h4>
-									<p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-										February 28, 2023
+										April 2025
 									</p>
 								</Link>
 							</div>

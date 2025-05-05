@@ -36,10 +36,10 @@ const Navbar = () => {
 
 	const navLinks = [
 		{ href: "/", label: "Home" },
-		{ href: "/blog", label: "Blog" },
 		{ href: "/about", label: "About" },
 		{ href: "/solutions", label: "Solutions" },
 		{ href: "/projects", label: "Projects" },
+		{ href: "/blog", label: "Publications" },
 		{ href: "/contact", label: "Contact" },
 	];
 
@@ -57,8 +57,8 @@ const Navbar = () => {
 						<Image
 							src={CrossAfriqueImg}
 							alt="Crossarique"
-							width={180}
-							height={150}
+							width={220}
+							height={160}
 							className="object-contain"
 						/>
 					</Link>

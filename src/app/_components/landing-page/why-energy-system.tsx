@@ -10,28 +10,28 @@ const WhyEnergySystem = () => {
 			icon: <Lightbulb className="w-10 h-10 text-emerald-600" />,
 			title: "Strategic Innovation",
 			description:
-				"We create flexible energy hubs using smart combinations of hydrogen, solar, batteries, and control systems.",
+				"Integrated systems combine solar, hydrogen, batteries, and digital controls to meet diverse energy needs—power, heat, storage, and mobility—within a single platform.",
 		},
 		{
 			id: "benefit-2",
 			icon: <Building2 className="w-10 h-10 text-emerald-600" />,
 			title: "Bankable Infrastructure",
 			description:
-				"We design financially viable projects that attract investment through blended finance and structured models.",
+				"Integration enables smart risk-sharing across technologies, allowing us to structure bankable projects that attract both public and private capital.",
 		},
 		{
 			id: "benefit-3",
 			icon: <Users className="w-10 h-10 text-emerald-600" />,
-			title: "Local Impact",
+			title: "Local Context Relevance",
 			description:
-				"We develop solutions grounded in context—tailored to regional needs, job creation, and industrial growth.",
+				"We design systems that fit the physical, economic, and institutional realities of each region—driving industrial productivity, job creation, and self-reliance",
 		},
 		{
 			id: "benefit-4",
 			icon: <Globe className="w-10 h-10 text-emerald-600" />,
-			title: "Climate Resilience",
+			title: "Resilience Over Fragility",
 			description:
-				"We reduce emissions and enhance energy independence through decarbonized, distributed energy systems.",
+				"By decentralizing energy production and enabling local use, storage and control, integrated systems reduce dependence on unstable grids and fossil fuels.",
 		},
 	];
 
@@ -65,7 +65,7 @@ const WhyEnergySystem = () => {
 						viewport={{ once: true }}
 						className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white"
 					>
-						Why Integrated Energy Systems?
+						Why We Build Integrated Energy Systems?
 					</motion.h2>
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
@@ -74,9 +74,9 @@ const WhyEnergySystem = () => {
 						viewport={{ once: true }}
 						className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto"
 					>
-						Clean hydrogen is the ideal energy solution for Africa&#39;s unique
-						challenges and opportunities, offering multiple benefits for the
-						continent&#39;s sustainable development.
+						Energy challenges in Africa require systems that are flexible,
+						scalable, and rooted in local context. That&#39;s why we build
+						integrated energy systems engineered to deliver
 					</motion.p>
 				</div>
 

@@ -4,7 +4,7 @@ import EnergyHubImg from "@/app/_assets/images/energy-hub.jpg";
 import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import SystemArchitectureImg from "@/app/_assets/images/system-architecture.jpg";
-import Partners from "@/app/_components/landing-page/partners";
+// import Partners from "@/app/_components/landing-page/partners";
 import { Button } from "@/components/ui/button";
 import {
 	ArrowRight,
@@ -399,7 +399,7 @@ export default function SolutionsPage() {
 				</div>
 			</section>
 
-			<section className="py-16 bg-white dark:bg-gray-900">
+			{/* <section className="py-16 bg-white dark:bg-gray-900">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="max-w-3xl mx-auto text-center mb-12">
 						<motion.h2
@@ -506,7 +506,7 @@ export default function SolutionsPage() {
 				</div>
 			</section>
 
-			<Partners />
+			<Partners /> */}
 		</div>
 	);
 }

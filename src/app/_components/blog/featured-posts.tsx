@@ -14,9 +14,9 @@ const FeaturedPosts = () => {
 			excerpt:
 				"A systems-level perspective on how clean energy transitions require integration, not silos—combining hydrogen with batteries, solar, and smart control.",
 			image: "/images/blog/green-hydrogen-africa.jpg",
-			date: "May 15, 2023",
-			author: "Dr. Sarah Kimani",
-			category: "Clean Energy Transitions",
+			date: "April 2025",
+			author: "Joshua Dauda",
+			category: "Clean Energy Transitions and Technology & Innovation",
 		},
 		{
 			id: 2,
@@ -24,9 +24,9 @@ const FeaturedPosts = () => {
 			excerpt:
 				"Exploring how financial innovation and blended capital can unlock investment in hydrogen and multi-carrier infrastructure.",
 			image: "/images/blog/hydrogen-storage.jpg",
-			date: "April 22, 2023",
-			author: "Eng. Michael Okafor",
-			category: "Technology & Innovation",
+			date: "April 2025",
+			author: "Joshua Dauda",
+			category: "Finance and Project Development",
 		},
 	];
 

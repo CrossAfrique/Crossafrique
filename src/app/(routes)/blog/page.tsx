@@ -1,4 +1,4 @@
-import BlogCategories from "@/app/_components/blog/blog-categories";
+// import BlogCategories from "@/app/_components/blog/blog-categories";
 import FeaturedPosts from "@/app/_components/blog/featured-posts";
 import Newsletter from "@/app/_components/blog/newsletter";
 
@@ -32,7 +32,7 @@ export default function BlogPage() {
 			</div>
 
 			<FeaturedPosts />
-			<BlogCategories />
+			{/* <BlogCategories /> */}
 			<Newsletter />
 		</div>
 	);

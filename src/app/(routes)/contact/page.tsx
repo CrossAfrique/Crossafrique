@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Clock, Mail, MapPin, Phone, Send } from "lucide-react";
+import { CheckCircle2, Clock, Mail, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -107,7 +107,7 @@ export default function ContactPage() {
 							</p>
 
 							<div className="space-y-6">
-								<div className="flex items-start">
+								{/* <div className="flex items-start">
 									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mr-4">
 										<MapPin className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
 									</div>
@@ -135,7 +135,7 @@ export default function ContactPage() {
 											+254 123 456 789
 										</p>
 									</div>
-								</div>
+								</div> */}
 
 								<div className="flex items-start">
 									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mr-4">
@@ -168,7 +168,7 @@ export default function ContactPage() {
 								</div>
 							</div>
 
-							<div className="mt-12">
+							{/* <div className="mt-12">
 								<h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
 									Regional Offices
 								</h3>
@@ -225,7 +225,7 @@ export default function ContactPage() {
 										</p>
 									</div>
 								</div>
-							</div>
+							</div> */}
 						</motion.div>
 
 						<motion.div
@@ -423,8 +423,9 @@ export default function ContactPage() {
 							viewport={{ once: true }}
 							className="text-lg text-gray-700 dark:text-gray-300"
 						>
-							With offices across Africa, we&#39;re well-positioned to serve
-							clients throughout the continent.
+							With a strong base in Africa and active partnerships across
+							Europe, we bridge continents to deliver clean energy solutions
+							that are both locally grounded and globally informed.
 						</motion.p>
 					</div>
 
@@ -437,7 +438,7 @@ export default function ContactPage() {
 					>
 						{/* In a real application, this would be an interactive map */}
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31910.673087608795!2d36.78002236954705!3d-1.2892119086816388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1651234567890!5m2!1sen!2sus"
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.4588470933!2d3.1191195!3d6.5480551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1651234567890!5m2!1sen!2sus"
 							width="100%"
 							height="100%"
 							style={{ border: 0 }}

@@ -65,16 +65,25 @@ const LeadershipTeam = () => {
 					className="text-center mb-16"
 				>
 					<h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-						Our Leadership Team
+						Our Team of Experts
 					</h2>
 					<p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-						Meet the experienced professionals guiding Crossafrique
-						Hydrogen&#39;s mission to transform Africa&#39;s energy landscape.
+						Our team of experts brings together over 50 years of combined
+						experience in renewable energy project development, project finance,
+						and system integration. With deep technical and financial expertise,
+						we design and deploy integrated energy hubs that combine hydrogen,
+						solar PV, battery storage, and smart control systems. Having worked
+						across Africa and Europe, our professionals bridge global innovation
+						with local realities. From early-stage assessments to project
+						structuring and long-term optimization, we are committed to
+						delivering clean, reliable, and scalable energy solutions that
+						support industrial growth, climate resilience, and sustainable
+						development.
 					</p>
 				</motion.div>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<motion.div
+					{/* <motion.div
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
@@ -114,7 +123,7 @@ const LeadershipTeam = () => {
 								</p>
 							</div>
 						</div>
-					</motion.div>
+					</motion.div> */}
 
 					{/* {leaders.map((leader, index) => (
 						<motion.div
