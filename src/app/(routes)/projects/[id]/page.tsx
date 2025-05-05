@@ -1,5 +1,6 @@
 "use client";
 
+import { projects } from "@/app/_constants";
 import { Button } from "@/components/ui/button";
 import parse from "html-react-parser";
 import { ArrowLeft, Calendar, MapPin } from "lucide-react";
@@ -7,7 +8,6 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { projects } from "../page";
 
 // This would typically come from a CMS or database
 const getProject = (id: string) => {
