@@ -1,6 +1,6 @@
 // import BlogCategories from "@/app/_components/blog/blog-categories";
-import FeaturedPosts from "@/app/_components/blog/featured-posts";
-import Newsletter from "@/app/_components/blog/newsletter";
+import FeaturedPosts from "@/app/blog/_components/featured-posts";
+import Newsletter from "@/app/blog/_components/newsletter";
 
 export const metadata = {
 	title: "Blog & Publications | Crossafrique Hydrogen",

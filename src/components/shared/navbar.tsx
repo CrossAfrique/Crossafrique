@@ -1,5 +1,6 @@
 "use client";
 
+import CrossAfriqueImg from "@/app/_assets/images/crossafrique.svg";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
@@ -7,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import CrossAfriqueImg from "../../_assets/images/crossafrique.svg";
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);

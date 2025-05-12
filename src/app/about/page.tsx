@@ -1,8 +1,8 @@
-import AboutHero from "@/app/_components/about/hero-section";
-import LeadershipTeam from "@/app/_components/about/leadership-team";
-import OurStory from "@/app/_components/about/our-story";
-import Values from "@/app/_components/about/values";
-import CTASection from "@/app/_components/landing-page/cta-section";
+import CTASection from "@/app/_components/cta-section";
+import AboutHero from "@/app/about/_components/hero-section";
+import LeadershipTeam from "@/app/about/_components/leadership-team";
+import OurStory from "@/app/about/_components/our-story";
+import Values from "@/app/about/_components/values";
 
 export const metadata = {
 	title: "About Us | Crossafrique Hydrogen",
