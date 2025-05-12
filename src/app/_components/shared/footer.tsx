@@ -22,7 +22,7 @@ const SOCIALS = [
 	},
 	{
 		label: "LinkedIn",
-		href: "https://www.linkedin.com/company/",
+		href: "https://www.linkedin.com/company/crossafrique-hydrogen/about/?viewAsMember=true",
 		icon: Linkedin,
 	},
 	{

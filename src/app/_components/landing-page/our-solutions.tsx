@@ -57,8 +57,8 @@ const OurSolutions = () => {
 						Our Work & Solutions
 					</h2>
 					<p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-						We provide comprehensive hydrogen solutions across the entire value
-						chain, from production to end-use applications.
+						We deliver end-to-end solutions that enable the development and
+						financing of integrated energy systems.
 					</p>
 				</motion.div>
 

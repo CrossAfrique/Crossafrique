@@ -76,7 +76,7 @@ const WhyEnergySystem = () => {
 					>
 						Energy challenges in Africa require systems that are flexible,
 						scalable, and rooted in local context. That&#39;s why we build
-						integrated energy systems engineered to deliver
+						integrated energy systems engineered to deliver:
 					</motion.p>
 				</div>
 
