@@ -1,15 +1,15 @@
 "use client";
 
+import EnergyHubImg from "@/app/_assets/images/energy-hub.jpg";
+import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
+import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
+import SystemArchitectureImg from "@/app/_assets/images/system-architecture.jpg";
 import FadeInY from "@/components/animations/fade-in-y";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import EnergyHubImg from "../../_assets/images/energy-hub.jpg";
-import FinancialStructuringImg from "../../_assets/images/financial-structuring.jpg";
-import IndustrialApplicationImg from "../../_assets/images/industrial-application.jpg";
-import SystemArchitectureImg from "../../_assets/images/system-architecture.jpg";
 
 const OurSolutions = () => {
 	const solutions = [

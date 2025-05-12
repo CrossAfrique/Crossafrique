@@ -54,90 +54,90 @@ const APPROACH = [
 	},
 ];
 
-export default function SolutionsPage() {
-	const solutions = [
-		{
-			id: "integrated-energy-hubs",
-			title: "Integrated Energy Hubs",
-			description:
-				"We develop hubs combining multiple energy carriers—hydrogen, solar PV, battery storage—into coordinated, high-impact systems.",
-			icon: <Zap className="w-10 h-10 text-emerald-600" />,
-			image: EnergyHubImg,
-			benefits: [
-				"Zero-emission energy production",
-				"Scalable from small to utility-scale",
-				"Leverages Africa's abundant renewable resources",
-				"Integrated systems for maximum efficiency",
-			],
-			applications: [
-				"Industrial zones",
-				"Commercial complexes",
-				"Community energy systems",
-				"Off-grid applications",
-			],
-		},
-		{
-			id: "financial-structuring",
-			title: "Financial Structuring",
-			description:
-				"We design investment-ready projects with robust business models, using blended finance and private-public partnerships.",
-			icon: <ChartArea className="w-10 h-10 text-emerald-600" />,
-			image: FinancialStructuringImg,
-			benefits: [
-				"Reduced investment risk",
-				"Access to diverse funding sources",
-				"Sustainable business models",
-				"Optimized return on investment",
-			],
-			applications: [
-				"Public-private partnerships",
-				"Blended finance projects",
-				"Carbon credit monetization",
-				"Impact investment opportunities",
-			],
-		},
-		{
-			id: "applied-research-innovation",
-			title: "Innovation & Research",
-			description:
-				"We collaborate with universities and technical partners to drive applied research and next-generation energy solutions.",
-			icon: <BookOpen className="w-10 h-10 text-emerald-600" />,
-			image: IndustrialApplicationImg,
-			benefits: [
-				"Access to cutting-edge technologies",
-				"Knowledge transfer and capacity building",
-				"Locally adapted solutions",
-				"Continuous improvement and innovation",
-			],
-			applications: [
-				"University research partnerships",
-				"Technology demonstration projects",
-				"Innovation hubs and incubators",
-				"Technical training programs",
-			],
-		},
-		{
-			id: "system-architecture-and-smart-control",
-			title: "System Architecture & Smart Control",
-			description:
-				"We implement digital control systems that ensure efficient energy flows and grid responsiveness.",
-			icon: <Factory className="w-10 h-10 text-emerald-600" />,
-			image: SystemArchitectureImg,
-			benefits: [
-				"Optimized energy flows",
-				"Real-time monitoring and control",
-				"Predictive maintenance capabilities",
-				"Enhanced system reliability",
-			],
-			applications: [
-				"Smart grid integration",
-				"Energy management systems",
-				"Demand response solutions",
-				"Digital twin modeling",
-			],
-		},
-	];
+export const SOLUTIONS = [
+	{
+		id: "integrated-energy-hubs",
+		title: "Integrated Energy Hubs",
+		description:
+			"We develop hubs combining multiple energy carriers—hydrogen, solar PV, battery storage—into coordinated, high-impact systems.",
+		icon: <Zap className="w-10 h-10 text-emerald-600" />,
+		image: EnergyHubImg,
+		benefits: [
+			"Zero-emission energy production",
+			"Scalable from small to utility-scale",
+			"Leverages Africa's abundant renewable resources",
+			"Integrated systems for maximum efficiency",
+		],
+		applications: [
+			"Industrial zones",
+			"Commercial complexes",
+			"Community energy systems",
+			"Off-grid applications",
+		],
+	},
+	{
+		id: "financial-structuring",
+		title: "Financial Structuring",
+		description:
+			"We design investment-ready projects with robust business models, using blended finance and private-public partnerships.",
+		icon: <ChartArea className="w-10 h-10 text-emerald-600" />,
+		image: FinancialStructuringImg,
+		benefits: [
+			"Reduced investment risk",
+			"Access to diverse funding sources",
+			"Sustainable business models",
+			"Optimized return on investment",
+		],
+		applications: [
+			"Public-private partnerships",
+			"Blended finance projects",
+			"Carbon credit monetization",
+			"Impact investment opportunities",
+		],
+	},
+	{
+		id: "applied-research-innovation",
+		title: "Innovation & Research",
+		description:
+			"We collaborate with universities and technical partners to drive applied research and next-generation energy solutions.",
+		icon: <BookOpen className="w-10 h-10 text-emerald-600" />,
+		image: IndustrialApplicationImg,
+		benefits: [
+			"Access to cutting-edge technologies",
+			"Knowledge transfer and capacity building",
+			"Locally adapted solutions",
+			"Continuous improvement and innovation",
+		],
+		applications: [
+			"University research partnerships",
+			"Technology demonstration projects",
+			"Innovation hubs and incubators",
+			"Technical training programs",
+		],
+	},
+	{
+		id: "system-architecture-and-smart-control",
+		title: "System Architecture & Smart Control",
+		description:
+			"We implement digital control systems that ensure efficient energy flows and grid responsiveness.",
+		icon: <Factory className="w-10 h-10 text-emerald-600" />,
+		image: SystemArchitectureImg,
+		benefits: [
+			"Optimized energy flows",
+			"Real-time monitoring and control",
+			"Predictive maintenance capabilities",
+			"Enhanced system reliability",
+		],
+		applications: [
+			"Smart grid integration",
+			"Energy management systems",
+			"Demand response solutions",
+			"Digital twin modeling",
+		],
+	},
+];
 
+export default function SolutionsPage() {
 	return (
 		<div className="pt-16">
 			<div className="bg-emerald-700 text-white py-20">
@@ -191,7 +191,7 @@ export default function SolutionsPage() {
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-max mx-auto">
-						{solutions.map((solution, index) => (
+						{SOLUTIONS.map((solution, index) => (
 							<motion.div
 								key={solution.id}
 								initial={{ opacity: 0, y: 30 }}
