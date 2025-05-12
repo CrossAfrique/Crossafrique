@@ -1,5 +1,7 @@
 "use client";
 
+import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
+import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, User } from "lucide-react";
 import { motion } from "motion/react";
@@ -13,7 +15,7 @@ const FeaturedPosts = () => {
 			title: "Why Hydrogen Is Only Part of the Answer",
 			excerpt:
 				"A systems-level perspective on how clean energy transitions require integration, not silos—combining hydrogen with batteries, solar, and smart control.",
-			image: "/images/blog/green-hydrogen-africa.jpg",
+			image: IndustrialApplicationImg,
 			date: "April 2025",
 			author: "Joshua Dauda",
 			category: "Clean Energy Transitions and Technology & Innovation",
@@ -23,7 +25,7 @@ const FeaturedPosts = () => {
 			title: "Designing Bankable Energy Systems in Emerging Markets",
 			excerpt:
 				"Exploring how financial innovation and blended capital can unlock investment in hydrogen and multi-carrier infrastructure.",
-			image: "/images/blog/hydrogen-storage.jpg",
+			image: FinancialStructuringImg,
 			date: "April 2025",
 			author: "Joshua Dauda",
 			category: "Finance and Project Development",
