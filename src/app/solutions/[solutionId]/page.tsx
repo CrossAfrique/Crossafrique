@@ -1,12 +1,12 @@
 "use client";
 
+import { SOLUTIONS } from "@/app/_constants";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { SOLUTIONS } from "../page";
 
 // interface Solution {
 // 	id: string;
