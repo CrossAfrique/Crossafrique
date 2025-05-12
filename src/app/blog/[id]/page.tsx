@@ -1,10 +1,11 @@
+import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
+import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import { Button } from "@/components/ui/button";
 import parse from "html-react-parser";
 import { ArrowLeft, Calendar, Share2, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-// This would typically come from a CMS or database
 const getBlogPost = (id: string) => {
 	const posts = [
 		{
@@ -20,9 +21,9 @@ const getBlogPost = (id: string) => {
 
 				<p>At CrossAfrique Hydrogen, we believe that true energy resilience comes from connection. Hydrogen is a critical piece of the puzzle, but the future lies in systems that are designed to collaborate, not compete. Through integrated planning, financial structuring, and innovation, we aim to turn isolated technologies into unified solutions—powering sustainable development at scale.</p>
       		`,
-			image: "/images/blog/green-hydrogen-africa.jpg",
+			image: FinancialStructuringImg,
 			date: "April 2025",
-			author: "Dr. Sarah Kimani",
+			author: "Joshua Dauda",
 			authorTitle: "Chief Executive Officer",
 			authorImage: "/images/team/sarah-kimani.jpg",
 			category: "Clean Energy & Sustainability",
@@ -32,7 +33,7 @@ const getBlogPost = (id: string) => {
 			title: "Designing Bankable Energy Systems in Emerging Markets",
 			content:
 				"Exploring how financial innovation and blended capital can unlock investment in hydrogen and multi-carrier infrastructure.",
-			image: "/images/blog/hydrogen-storage.jpg",
+			image: IndustrialApplicationImg,
 			date: "April 2025",
 			author: "Joshua Dauda",
 			authorTitle: "Chief Executive Officer",

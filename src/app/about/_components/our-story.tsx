@@ -7,7 +7,7 @@ const OurStory = () => {
 	return (
 		<section className="py-20 bg-white dark:bg-gray-900">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<div className="grid grid-cols-1">
 					<motion.div
 						initial={{ opacity: 0, x: -30 }}
 						whileInView={{ opacity: 1, x: 0 }}
@@ -34,7 +34,7 @@ const OurStory = () => {
 						</p>
 					</motion.div>
 
-					<motion.div
+					{/* <motion.div
 						initial={{ opacity: 0, x: 30 }}
 						whileInView={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.8 }}
@@ -47,7 +47,7 @@ const OurStory = () => {
 							fill
 							className="object-cover"
 						/>
-					</motion.div>
+					</motion.div> */}
 				</div>
 
 				<div className="mt-20">
