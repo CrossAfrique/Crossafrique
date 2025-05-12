@@ -1,13 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-	ArrowLeft,
-	CheckCircle2,
-	Droplets,
-	Factory,
-	Truck,
-} from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";

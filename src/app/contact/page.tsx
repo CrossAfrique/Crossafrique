@@ -83,8 +83,8 @@ export default function ContactPage() {
 						transition={{ duration: 0.6, delay: 0.2 }}
 						className="text-xl text-emerald-100 max-w-3xl mx-auto"
 					>
-						Get in touch with our team to discuss your hydrogen needs or to
-						learn more about our solutions.
+						Get in touch with our team to discuss your project needs or to learn
+						more about our solutions.
 					</motion.p>
 				</div>
 			</div>
