@@ -52,42 +52,45 @@ const FeaturedPosts = () => {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6, delay: index * 0.2 }}
 						>
-							<Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-								<Link href={`/blog/${post.id}`} className="block">
-									<div className="relative h-48 w-full">
-										<Image
-											src={post.image}
-											alt={post.title}
-											fill
-											className="object-cover"
-										/>
-									</div>
-								</Link>
-								<CardContent className="p-6">
-									<div className="flex items-center mb-3">
-										<span className="text-xs font-medium px-2 py-1 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full">
-											{post.category}
-										</span>
-									</div>
-									<Link href={`/blog/${post.id}`}>
-										<h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-											{post.title}
-										</h3>
+							<Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300 p-6 justify-between">
+								<div className="flex flex-col gap-6">
+									<Link href={`/blog/${post.id}`} className="block">
+										<div className="relative h-48 w-full">
+											<Image
+												src={post.image}
+												alt={post.title}
+												fill
+												className="object-cover"
+											/>
+										</div>
 									</Link>
-									<p className="text-gray-700 dark:text-gray-300 mb-4">
-										{post.excerpt}
-									</p>
-									<div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-										<div className="flex items-center mr-4">
-											<Calendar className="w-4 h-4 mr-1" />
-											<span>{post.date}</span>
+									<CardContent className="p-0">
+										<div className="flex items-center mb-3">
+											<span className="text-xs font-medium px-2 py-1 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full">
+												{post.category}
+											</span>
 										</div>
-										<div className="flex items-center">
-											<User className="w-4 h-4 mr-1" />
-											<span>{post.author}</span>
-										</div>
+										<Link href={`/blog/${post.id}`}>
+											<h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+												{post.title}
+											</h3>
+										</Link>
+										<p className="text-gray-700 dark:text-gray-300 mb-4">
+											{post.excerpt}
+										</p>
+									</CardContent>
+								</div>
+
+								<div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+									<div className="flex items-center mr-4">
+										<Calendar className="w-4 h-4 mr-1" />
+										<span>{post.date}</span>
 									</div>
-								</CardContent>
+									<div className="flex items-center">
+										<User className="w-4 h-4 mr-1" />
+										<span>{post.author}</span>
+									</div>
+								</div>
 							</Card>
 						</motion.div>
 					))}

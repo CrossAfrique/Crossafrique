@@ -560,7 +560,7 @@ export default function SolutionPage() {
 
 			<section className="py-16 bg-gray-50 dark:bg-gray-800">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-3xl mx-auto text-center">
+					<div className="max-w-5xl mx-auto text-center">
 						<motion.h2
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}

@@ -62,11 +62,11 @@ const SOLUTIONS = [
 	},
 	{
 		label: "Innovation & Research",
-		href: "/solutions/innovation-research",
+		href: "/solutions/applied-research-innovation",
 	},
 	{
 		label: "System Architecture & Smart Control",
-		href: "/solutions/system-architecture-smart-control",
+		href: "/solutions/system-architecture-and-smart-control",
 	},
 ];
 

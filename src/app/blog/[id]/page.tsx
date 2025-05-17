@@ -24,8 +24,6 @@ const getBlogPost = (id: string) => {
 			image: FinancialStructuringImg,
 			date: "April 2025",
 			author: "Joshua Dauda",
-			authorTitle: "Chief Executive Officer",
-			authorImage: "/images/team/sarah-kimani.jpg",
 			category: "Clean Energy & Sustainability",
 		},
 		{
@@ -36,8 +34,6 @@ const getBlogPost = (id: string) => {
 			image: IndustrialApplicationImg,
 			date: "April 2025",
 			author: "Joshua Dauda",
-			authorTitle: "Chief Executive Officer",
-			authorImage: "/images/team/sarah-kimani.jpg",
 			category: "Finance and Project Development",
 		},
 	];
@@ -103,22 +99,9 @@ export default async function BlogPostPage(props: {
 						<div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
 							<div className="flex items-center justify-between">
 								<div className="flex items-center">
-									<div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-										<Image
-											src={post.authorImage}
-											alt={post.author}
-											fill
-											className="object-cover"
-										/>
-									</div>
-									<div>
-										<h3 className="font-medium text-gray-900 dark:text-white">
-											{post.author}
-										</h3>
-										<p className="text-sm text-gray-500 dark:text-gray-400">
-											{post.authorTitle}
-										</p>
-									</div>
+									<h3 className="font-medium text-gray-900 dark:text-white">
+										{post.author}
+									</h3>
 								</div>
 								<Button
 									variant="outline"
