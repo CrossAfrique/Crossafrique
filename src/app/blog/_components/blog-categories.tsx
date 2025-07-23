@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { getWordPressBlogPosts } from "..";
+import { getWordPressBlogPosts } from "@/app/blog/_actions";
 
 const TABS = [
   { value: "all", label: "All Posts" },
