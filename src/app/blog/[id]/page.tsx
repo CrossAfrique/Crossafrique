@@ -5,7 +5,7 @@ import parse from "html-react-parser";
 import { ArrowLeft, Calendar, Share2, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { getWordPressBlogPost } from "..";
+import { getWordPressBlogPost } from "@/app/blog/_actions";
 
 export default async function BlogPostPage(props: {
   params: Promise<{ id: string }>;
