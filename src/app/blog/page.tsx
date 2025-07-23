@@ -2,6 +2,7 @@
 import FeaturedPosts from "@/app/blog/_components/featured-posts";
 import Newsletter from "@/app/blog/_components/newsletter";
 import { getWordPressBlogPosts } from "@/app/blog/_actions";
+import type { WordPressBlogPost } from "@/app/blog/types";
 
 export const metadata = {
   title: "Blog & Publications | Crossafrique Hydrogen",
@@ -10,7 +11,13 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  const { posts } = await getWordPressBlogPosts({ limit: 2 }); // Fetch featured posts
+  let posts: WordPressBlogPost[] = [];
+  try {
+    const { posts: fetchedPosts } = await getWordPressBlogPosts({ limit: 2 });
+    posts = fetchedPosts;
+  } catch (error) {
+    console.error("Failed to load posts:", error);
+  }
 
   return (
     <div className="pt-16">
@@ -35,7 +42,6 @@ export default async function BlogPage() {
       </div>
 
       <FeaturedPosts initialPosts={posts} />
-      {/* <BlogCategories /> */}
       <Newsletter />
     </div>
   );
