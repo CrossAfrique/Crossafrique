@@ -8,32 +8,34 @@ export const metadata = {
 		"Stay updated with the latest news, insights, and developments in clean hydrogen technology and its applications across Africa.",
 };
 
-export default function BlogPage() {
-	return (
-		<div className="pt-16">
-			<div className="bg-emerald-700 text-white py-20">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<h1 className="text-4xl md:text-5xl font-bold mb-6">
-						Blog & Publications
-					</h1>
-					<p className="text-xl text-emerald-100 max-w-3xl mx-auto">
-						Insights, innovation, and ideas from the frontlines of clean energy
-						systems.
-					</p>
-					<p className="text-xl text-emerald-100 max-w-5xl mx-auto mt-3">
-						At CrossAfrique Hydrogen, we are shaping the future of sustainable
-						energy through applied research, systems thinking, and practical
-						project development. Our blog shares the latest updates on our work,
-						industry trends, and thought leadership on integrated energy
-						solutions—where hydrogen, solar, storage, and digital control
-						converge.
-					</p>
-				</div>
-			</div>
+export default async function BlogPage() {
+  const { posts } = await getWordPressBlogPosts({ limit: 2 }); // Fetch featured posts
 
-			<FeaturedPosts />
-			{/* <BlogCategories /> */}
-			<Newsletter />
-		</div>
-	);
+  return (
+    <div className="pt-16">
+      <div className="bg-emerald-700 text-white py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Blog & Publications
+          </h1>
+          <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
+            Insights, innovation, and ideas from the frontlines of clean energy
+            systems.
+          </p>
+          <p className="text-xl text-emerald-100 max-w-5xl mx-auto mt-3">
+            At CrossAfrique Hydrogen, we are shaping the future of sustainable
+            energy through applied research, systems thinking, and practical
+            project development. Our blog shares the latest updates on our work,
+            industry trends, and thought leadership on integrated energy
+            solutions—where hydrogen, solar, storage, and digital control
+            converge.
+          </p>
+        </div>
+      </div>
+
+      <FeaturedPosts initialPosts={posts} />
+      {/* <BlogCategories /> */}
+      <Newsletter />
+    </div>
+  );
 }
