@@ -7,7 +7,7 @@ import { Calendar, User } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { getWordPressBlogPosts } from "..";
+import { getWordPressBlogPosts } from "@/app/blog/_actions";
 
 const FeaturedPosts = async ({ initialPosts }: { initialPosts?: WordPressBlogPost[] }) => {
   const { posts } = initialPosts ? { posts: initialPosts } : await getWordPressBlogPosts({ limit: 2 });
