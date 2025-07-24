@@ -1,8 +1,7 @@
+
 "use client";
 
-import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
-import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, User } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
@@ -42,7 +41,7 @@ export default function FeaturedPosts({ initialPosts }: { initialPosts: WordPres
                     />
                   </div>
                 </Link>
-                <CardContent className="p-0">
+                <div className="p-0">
                   <div className="flex items-center mb-3">
                     <span className="text-xs font-medium px-2 py-1 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full">
                       {Object.values(post.categories)[0]?.name || "Uncategorized"}
@@ -56,7 +55,7 @@ export default function FeaturedPosts({ initialPosts }: { initialPosts: WordPres
                   <p className="text-gray-700 dark:text-gray-300 mb-4">
                     {post.excerpt}
                   </p>
-                </CardContent>
+                </div>
               </div>
 
               <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
