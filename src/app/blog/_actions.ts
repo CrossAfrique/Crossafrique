@@ -7,7 +7,7 @@ import type {
   WordPressBlogPost,
   WordPressBlogPosts,
   IAuthor,
-  IWordPressCategory,
+  // IWordPressCategory,
 } from "./types";
 
 const BASE_URL = process.env.WORDPRESS_API_BASE_URL || "https://mx5.88c.myftpupload.com/wp-json/wp/v2/";
@@ -147,7 +147,22 @@ export async function getWordPressBlogPosts({
 }: BlogPostParams = {}): Promise<WordPressBlogPosts> {
   const fields = "author,id,date,title.rendered,excerpt.rendered,content.rendered,status,featured_media,categories,modified";
   let url = `${BASE_URL}posts?offset=${offset}&per_page=${limit}&_fields=${fields}`;
-  url = appendUrlParams(url, { categories: category, exclude, search });
+
+  // Handle category filtering
+  if (category) {
+    url += `&categories=${encodeURIComponent(category.toString())}`;
+  }
+
+  // Handle exclude parameter (single ID or array of IDs)
+  if (exclude) {
+    const excludeIds = Array.isArray(exclude) ? exclude : [exclude];
+    url += `&exclude=${excludeIds.map(id => encodeURIComponent(id.toString())).join(',')}`;
+  }
+
+  if (search) {
+    url += `&search=${encodeURIComponent(search)}`;
+  }
+
   console.log("Fetching URL:", url);
   return await wordPressFetch<WordPressPostResponse[]>(url).then(transformPosts);
 }
