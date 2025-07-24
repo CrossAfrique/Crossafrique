@@ -187,8 +187,8 @@ export async function getWordPressBlogPosts({
   if (offset < 0) throw new Error("Offset cannot be negative");
   if (category && (isNaN(Number(category)) || Number(category) < 0))
     throw new Error("Category must be a non-negative number");
-  if (exclude && !Array.isArray(exclude) && typeof exclude !== "number")
-    throw new Error("Exclude must be a number or array of numbers");
+  if (exclude !== undefined && typeof exclude !== "number")
+    throw new Error("Exclude must be a number");
   if (search && typeof search !== "string")
     throw new Error("Search must be a string");
 
@@ -199,11 +199,8 @@ export async function getWordPressBlogPosts({
   // Build query parameters safely
   const params: Record<string, string> = {};
   if (category) params.categories = category.toString();
-  if (exclude) {
-    const excludeIds = Array.isArray(exclude)
-      ? exclude.map((id) => id.toString())
-      : [exclude.toString()];
-    params.exclude = excludeIds.join(",");
+  if (exclude !== undefined) {
+    params.exclude = exclude.toString();
   }
   if (search) params.search = encodeURIComponent(search);
 

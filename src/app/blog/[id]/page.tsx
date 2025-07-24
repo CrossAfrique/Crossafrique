@@ -15,7 +15,7 @@ export default async function BlogPostPage(props: {
 }) {
   const params = await props.params;
   const post = await getWordPressBlogPost({ blogId: params.id });
-  const categoryKey = Object.keys(post.categories)[0];
+  const categoryKey = Object.keys(post.categories || {})[0];
   const category = categoryKey ? parseInt(categoryKey) : undefined;
   const relatedPosts = await getWordPressBlogPosts({
     category: category ? String(category) : undefined, // Use parsed category or undefined if none
@@ -40,19 +40,19 @@ export default async function BlogPostPage(props: {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="max-w-3xl">
               <span className="inline-block px-3 py-1 bg-emerald-600 text-white text-sm font-medium rounded-full mb-4">
-                {Object.values(post.categories)[0]?.name || "Uncategorized"}
+                {Object.values(post.categories || {})[0]?.name || "Uncategorized"}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-                {post.title}
+                {post.title || "Untitled"}
               </h1>
               <div className="flex items-center text-white/80">
                 <div className="flex items-center mr-6">
                   <Calendar className="w-4 h-4 mr-2" />
-                  <span>{new Date(post.date).toLocaleDateString()}</span>
+                  <span>{new Date(post.date || new Date()).toLocaleDateString()}</span>
                 </div>
                 <div className="flex items-center">
                   <User className="w-4 h-4 mr-2" />
-                  <span>{post.author.name || "Unknown Author"}</span>
+                  <span>{post.author?.name || "Unknown Author"}</span>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default async function BlogPostPage(props: {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <h3 className="font-medium text-gray-900 dark:text-white">
-                    {post.author.name || "Unknown Author"}
+                    {post.author?.name || "Unknown Author"}
                   </h3>
                 </div>
                 <Button
@@ -98,7 +98,7 @@ export default async function BlogPostPage(props: {
             <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
               Related Articles
             </h3>
-            {relatedPosts.posts.length > 0 ? (
+            {relatedPosts?.posts && relatedPosts.posts.length > 0 ? (
               <ul className="space-y-4">
                 {relatedPosts.posts.map((relatedPost) => (
                   <li key={relatedPost.ID}>
@@ -106,10 +106,10 @@ export default async function BlogPostPage(props: {
                       href={`/blog/${relatedPost.ID}`}
                       className="text-blue-600 hover:underline"
                     >
-                      {relatedPost.title}
+                      {relatedPost.title || "Untitled"}
                     </Link>
                     <p className="text-sm text-gray-600">
-                      {new Date(relatedPost.date).toLocaleDateString()}
+                      {new Date(relatedPost.date || new Date()).toLocaleDateString()}
                     </p>
                   </li>
                 ))}
