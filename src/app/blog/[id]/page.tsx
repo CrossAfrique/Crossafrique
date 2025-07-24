@@ -12,7 +12,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
   const post = await getWordPressBlogPost({ blogId: params.id });
   const relatedPosts = await getWordPressBlogPosts({
     category: Object.keys(post.categories)[0], // Use the first category ID
-    exclude: parseInt(params.id), // Exclude the current post
+    exclude: parseInt(params.id), // Exclude the current post as an array
     limit: 3, // Limit to 3 related posts
   });
 
