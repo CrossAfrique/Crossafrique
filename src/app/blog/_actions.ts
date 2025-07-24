@@ -7,7 +7,7 @@ import type {
   WordPressBlogPost,
   WordPressBlogPosts,
   IAuthor,
-  IWordPressCategory,
+  // IWordPressCategory,
 } from "./types";
 
 const BASE_URL = process.env.WORDPRESS_API_BASE_URL || "https://mx5.88c.myftpupload.com/wp-json/wp/v2/";
