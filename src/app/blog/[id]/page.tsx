@@ -5,13 +5,26 @@ import parse from "html-react-parser";
 import { ArrowLeft, Calendar, Share2, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { getWordPressBlogPost } from "@/app/blog/_actions";
+import {
+  getWordPressBlogPost,
+  getWordPressBlogPosts,
+} from "@/app/blog/_actions";
 
 export default async function BlogPostPage(props: {
   params: Promise<{ id: string }>;
 }) {
   const params = await props.params;
   const post = await getWordPressBlogPost({ blogId: params.id });
+  const categoryKey = Object.keys(post.categories)[0];
+  const category = categoryKey ? parseInt(categoryKey) : undefined;
+  const relatedPosts = await getWordPressBlogPosts({
+    category: category ? String(category) : undefined, // Use parsed category or undefined if none
+    exclude: parseInt(params.id),
+    limit: 3,
+  }).catch((error) => {
+    console.error("Failed to fetch related posts:", error);
+    return { found: 0, posts: [] }; // Fallback to empty array on error
+  });
 
   return (
     <div className="pt-16">
@@ -81,37 +94,30 @@ export default async function BlogPostPage(props: {
             </div>
           </div>
 
-          <div className="lg:w-1/3">
-            <div className="sticky top-24 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-                Related Articles
-              </h3>
-              <div className="space-y-4">
-                <Link
-                  href="/blog/2"
-                  className="block p-4 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-shadow"
-                >
-                  <h4 className="font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-                    Innovative Storage Solutions for Hydrogen
-                  </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                    April 2025
-                  </p>
-                </Link>
-                <Link
-                  href="/blog/3"
-                  className="block p-4 bg-white dark:bg-gray-900 rounded-lg hover:shadow-md transition-shadow"
-                >
-                  <h4 className="font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-                    Policy Frameworks for Hydrogen Development in East Africa
-                  </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                    April 2025
-                  </p>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <aside className="lg:w-1/3">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+              Related Articles
+            </h3>
+            {relatedPosts.posts.length > 0 ? (
+              <ul className="space-y-4">
+                {relatedPosts.posts.map((relatedPost) => (
+                  <li key={relatedPost.ID}>
+                    <Link
+                      href={`/blog/${relatedPost.ID}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      {relatedPost.title}
+                    </Link>
+                    <p className="text-sm text-gray-600">
+                      {new Date(relatedPost.date).toLocaleDateString()}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-500">No related articles found.</p>
+            )}
+          </aside>
         </div>
       </div>
     </div>
