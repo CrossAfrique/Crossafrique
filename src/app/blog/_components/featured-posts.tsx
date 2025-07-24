@@ -1,14 +1,18 @@
-
 "use client";
 
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import { Calendar, User } from "lucide-react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import type { WordPressBlogPost } from "@/app/blog/types";
+import sanitizeHtml from 'sanitize-html';
 
-export default function FeaturedPosts({ initialPosts }: { initialPosts: WordPressBlogPost[] }) {
+export default function FeaturedPosts({
+  initialPosts,
+}: {
+  initialPosts: WordPressBlogPost[];
+}) {
   return (
     <section className="py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +48,7 @@ export default function FeaturedPosts({ initialPosts }: { initialPosts: WordPres
                 <div className="p-0">
                   <div className="flex items-center mb-3">
                     <span className="text-xs font-medium px-2 py-1 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full">
-                      {Object.values(post.categories)[0]?.name || "Uncategorized"}
+                       {post.categories && Object.values(post.categories).length > 0 ? (Object.values(post.categories)[0] as any)?.name || "Uncategorized" : "Uncategorized"}
                     </span>
                   </div>
                   <Link href={`/blog/${post.ID}`}>
@@ -52,9 +56,13 @@ export default function FeaturedPosts({ initialPosts }: { initialPosts: WordPres
                       {post.title}
                     </h3>
                   </Link>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    {post.excerpt}
-                  </p>
+                  <div
+                    className="text-gray-700 dark:text-gray-300 mb-4"
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.excerpt || "", {
+                      allowedTags: sanitizeHtml.defaults.allowedTags,
+                      allowedAttributes: sanitizeHtml.defaults.allowedAttributes,
+                    }) }}
+                  />
                 </div>
               </div>
 

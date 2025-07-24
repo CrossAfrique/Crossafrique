@@ -1,4 +1,4 @@
-import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
+// import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import { Button } from "@/components/ui/button";
 import parse from "html-react-parser";
