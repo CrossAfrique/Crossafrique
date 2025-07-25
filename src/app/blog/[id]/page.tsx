@@ -1,4 +1,3 @@
-// import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import { Button } from "@/components/ui/button";
 import parse from "html-react-parser";
@@ -8,39 +7,69 @@ import Link from "next/link";
 import {
   getWordPressBlogPost,
   getWordPressBlogPosts,
+  WordPressPost,
 } from "@/app/blog/_actions";
 
-export default async function BlogPostPage(props: {
-  params: Promise<{ id: string }>;
-}) {
-  const params = await props.params;
-  const post = await getWordPressBlogPost({ blogId: params.id });
+interface BlogPostPageProps {
+  params: { id: string };
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const postId = params.id;
+
+  const post = await getWordPressBlogPost({ blogId: postId });
+  if (!post) {
+    return (
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <p className="text-red-500">Post not found.</p>
+      </div>
+    );
+  }
+
   const categoryKey = Object.keys(post.categories || {})[0];
   const category = categoryKey ? parseInt(categoryKey) : undefined;
-  const relatedPosts = await getWordPressBlogPosts({
-    category: category ? String(category) : undefined, // Use parsed category or undefined if none
-    exclude: parseInt(params.id),
-    limit: 3,
-  }).catch((error) => {
-    console.error("Failed to fetch related posts:", error);
-    return { found: 0, posts: [] }; // Fallback to empty array on error
-  });
+
+  let relatedPostsResult: { found: number; posts: WordPressPost[] } | null = null;
+
+  if (category) {
+    try {
+      relatedPostsResult = await getWordPressBlogPosts({
+        category: String(category),
+        exclude: parseInt(postId),
+        limit: 3,
+      });
+    } catch (error) {
+      console.error("Failed to fetch related posts:", error);
+      relatedPostsResult = { found: 0, posts: [] };
+    }
+  } else {
+    relatedPostsResult = { found: 0, posts: [] };
+  }
+
+  const relatedPosts = relatedPostsResult?.posts || [];
+
+  const postDate = post.date ? new Date(post.date) : new Date();
+  const formattedDate = postDate.toLocaleDateString();
+
+  const categoryName =
+    Object.values(post.categories || {})[0]?.name || "Uncategorized";
 
   return (
     <div className="pt-16">
       <div className="relative h-[40vh] min-h-[300px] w-full">
         <Image
           src={post.featured_image || IndustrialApplicationImg}
-          alt={post.title}
+          alt={post.title || "Blog Post"}
           fill
           className="object-cover"
           priority
+          suppressHydrationWarning // Added to suppress hydration warnings for images
         />
         <div className="absolute inset-0 bg-black/50 flex items-end">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="max-w-3xl">
               <span className="inline-block px-3 py-1 bg-emerald-600 text-white text-sm font-medium rounded-full mb-4">
-                {Object.values(post.categories || {})[0]?.name || "Uncategorized"}
+                {categoryName}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
                 {post.title || "Untitled"}
@@ -48,7 +77,7 @@ export default async function BlogPostPage(props: {
               <div className="flex items-center text-white/80">
                 <div className="flex items-center mr-6">
                   <Calendar className="w-4 h-4 mr-2" />
-                  <span>{new Date(post.date || new Date()).toLocaleDateString()}</span>
+                  <span>{formattedDate}</span>
                 </div>
                 <div className="flex items-center">
                   <User className="w-4 h-4 mr-2" />
@@ -98,9 +127,9 @@ export default async function BlogPostPage(props: {
             <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
               Related Articles
             </h3>
-            {relatedPosts?.posts && relatedPosts.posts.length > 0 ? (
+            {relatedPosts.length > 0 ? (
               <ul className="space-y-4">
-                {relatedPosts.posts.map((relatedPost) => (
+                {relatedPosts.map((relatedPost) => (
                   <li key={relatedPost.ID}>
                     <Link
                       href={`/blog/${relatedPost.ID}`}
