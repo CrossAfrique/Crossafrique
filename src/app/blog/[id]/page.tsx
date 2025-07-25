@@ -8,8 +8,8 @@ import Link from "next/link";
 import {
   getWordPressBlogPost,
   getWordPressBlogPosts,
-  WordPressPost,
 } from "@/app/blog/_actions";
+import type { WordPressBlogPost } from "@/app/blog/types";
 
 interface BlogPostPageProps {
   params: Promise<{ id: string }>;
@@ -31,7 +31,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const categoryKey = Object.keys(post.categories || {})[0];
   const category = categoryKey ? parseInt(categoryKey) : undefined;
 
-  let relatedPostsResult: { found: number; posts: WordPressPost[] } | null = null;
+  let relatedPostsResult: { found: number; posts: WordPressBlogPost[] } | null = null;
 
   if (category) {
     try {

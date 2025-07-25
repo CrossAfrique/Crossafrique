@@ -1,9 +1,9 @@
 
   "use client";
 
-  import { useState, useEffect } from "react";
- import { getWordPressBlogPosts } from "@/app/blog/_actions";
-// import type { WordPressBlogPost } from "@/app/blog/types";
+import { useState, useEffect } from "react";
+import { getWordPressBlogPosts } from "@/app/blog/_actions";
+import type { WordPressBlogPost } from "@/app/blog/types";
 
 export default function BlogCategories() {
   const [categories, setCategories] = useState<Record<string, any>[]>([]);
