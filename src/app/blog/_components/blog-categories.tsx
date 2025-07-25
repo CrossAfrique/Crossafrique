@@ -1,5 +1,5 @@
 
-  "use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { getWordPressBlogPosts } from "@/app/blog/_actions";
@@ -16,12 +16,17 @@ export default function BlogCategories() {
         setIsLoading(true);
         setError(null);
         const { posts } = await getWordPressBlogPosts({ limit: 10 });
+        
+        // Extract all categories from posts safely
         const allCategories = posts.flatMap((post) => 
           post.categories ? Object.values(post.categories) : []
         );
+        
+        // Remove duplicates using Map with category ID as key
         const uniqueCategories = Array.from(
           new Map(allCategories.map(cat => [cat.ID, cat])).values()
         );
+        
         setCategories(uniqueCategories);
       } catch (error) {
         console.error("Failed to fetch categories:", error);
@@ -30,6 +35,7 @@ export default function BlogCategories() {
         setIsLoading(false);
       }
     };
+    
     fetchCategories();
   }, []);
 
