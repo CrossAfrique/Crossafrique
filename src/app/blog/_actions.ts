@@ -7,10 +7,14 @@ import type {
   WordPressBlogPost,
   WordPressBlogPosts,
   IAuthor,
+  IWordPressCategory,
 } from "./types";
 
 const BASE_URL = process.env.WORDPRESS_API_BASE_URL || "https://mx5.88c.myftpupload.com/wp-json/wp/v2/";
 const CACHE_TIME = 60 * 60; // 1 hour cache
+
+// Export type alias for backward compatibility
+export type WordPressPost = WordPressBlogPost;
 
 interface WordPressPostResponse {
   id: number;
@@ -121,7 +125,7 @@ async function transformPost(
           `${BASE_URL}categories/${catId}`,
         );
 
-        const category: WordPressCategory = {
+        const category: IWordPressCategory = {
           ID: catId,
           name: categoryResponse.name || "Uncategorized",
           slug: categoryResponse.slug || "",
@@ -131,11 +135,11 @@ async function transformPost(
           meta: { links: { help: "", self: "", site: "" } },
         };
 
-        return [catId.toString(), category] as [string, WordPressCategory]; // Explicit type assertion
+        return [catId.toString(), category] as [string, IWordPressCategory]; // Explicit type assertion
       } catch (error) {
         console.warn(`Failed to fetch category ${catId}:`, error);
 
-        const defaultCategory: WordPressCategory = {
+        const defaultCategory: IWordPressCategory = {
           ID: catId,
           name: "Uncategorized",
           slug: "",
@@ -145,7 +149,7 @@ async function transformPost(
           meta: { links: { help: "", self: "", site: "" } },
         };
 
-        return [catId.toString(), defaultCategory] as [string, WordPressCategory]; // Explicit type assertion
+        return [catId.toString(), defaultCategory] as [string, IWordPressCategory]; // Explicit type assertion
       }
     }),
   );

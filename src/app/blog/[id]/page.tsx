@@ -15,7 +15,8 @@ interface BlogPostPageProps {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const postId = params.id;
+  const resolvedParams = await params;
+  const postId = resolvedParams.id;
 
   const post = await getWordPressBlogPost({ blogId: postId });
   if (!post) {
