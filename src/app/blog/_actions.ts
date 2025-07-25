@@ -119,7 +119,7 @@ async function transformPost(
   }
 
   const categories = await Promise.all(
-    post.categories.map(async (catId: number) => {
+    (post.categories || []).map(async (catId: number) => {
       try {
         const categoryResponse = await wordPressFetch<WordPressCategoryResponse>(
           `${BASE_URL}categories/${catId}`,

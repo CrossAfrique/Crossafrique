@@ -19,7 +19,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
   const postId = resolvedParams.id;
 
-  const post = await getWordPressBlogPost({ blogId: postId });
+  let post: WordPressBlogPost;
+  try {
+    post = await getWordPressBlogPost({ blogId: postId });
+  } catch (error) {
+    console.error("Failed to fetch blog post:", error);
+    return (
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <p className="text-red-500">Failed to load post. Please try again later.</p>
+      </div>
+    );
+  }
+
   if (!post) {
     return (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
