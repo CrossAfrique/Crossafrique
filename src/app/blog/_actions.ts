@@ -7,13 +7,16 @@ import type {
   WordPressBlogPost,
   WordPressBlogPosts,
   IAuthor,
-  // IWordPressCategory,
+  IWordPressCategory,
 } from "./types";
 
 const BASE_URL =
   process.env.WORDPRESS_API_BASE_URL ||
   "https://mx5.88c.myftpupload.com/wp-json/wp/v2/";
 const CACHE_TIME = 60 * 60; // 1 hour cache
+
+// Export type alias for backward compatibility
+export type WordPressPost = WordPressBlogPost;
 
 interface WordPressPostResponse {
   id: number;
@@ -35,19 +38,29 @@ interface WordPressUserResponse {
 }
 
 interface WordPressCategoryResponse {
+  id: number;
   name: string;
   slug: string;
   description: string;
   count: number;
 }
 
-async function wordPressFetch<T>(url: string): Promise<T> {
+async function wordPressFetch<T>(
+  url: string,
+  signal?: AbortSignal,
+): Promise<T> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10-second timeout
+
   try {
     const response = await fetch(url, {
       next: { revalidate: CACHE_TIME },
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      signal: signal || controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       const error = `WordPress API error: ${response.status} - ${response.statusText}`;
@@ -55,8 +68,14 @@ async function wordPressFetch<T>(url: string): Promise<T> {
       throw new Error(error);
     }
 
-    return await response.json();
+    return (await response.json()) as T; // Type assertion for stricter typing
   } catch (error) {
+    clearTimeout(timeoutId); // Ensure timeout is cleared even on error
+
+    if (error instanceof Error && error.name === "AbortError") {
+      throw new Error("Request timed out");
+    }
+
     console.error("Fetch error:", error);
     throw new Error("Failed to fetch data from WordPress API");
   }
@@ -78,10 +97,12 @@ async function transformPost(
     profile_URL: "",
     site_ID: 0,
   };
+
   try {
     const authorResponse = await wordPressFetch<WordPressUserResponse>(
       `${BASE_URL}users/${post.author}`,
     );
+
     author = {
       ID: post.author,
       name: authorResponse.name || "Unknown Author",
@@ -100,38 +121,23 @@ async function transformPost(
   }
 
   const categories = await Promise.all(
-    (post.categories || []).map(async (catId: number) => {
+    post.categories.map(async (catId: number) => {
       try {
-        const categoryResponse =
-          await wordPressFetch<WordPressCategoryResponse>(
-            `${BASE_URL}categories/${catId}`,
-          );
-        return [
-          catId.toString(),
-          {
-            ID: catId,
-            name: categoryResponse.name || "Uncategorized",
-            slug: categoryResponse.slug || "",
-            description: categoryResponse.description || "",
-            post_count: categoryResponse.count || 0,
-            parent: 0,
-            meta: { links: { help: "", self: "", site: "" } },
-          },
-        ];
+
       } catch (error) {
         console.warn(`Failed to fetch category ${catId}:`, error);
-        return [
-          catId.toString(),
-          {
-            ID: catId,
-            name: "Uncategorized",
-            slug: "",
-            description: "",
-            post_count: 0,
-            parent: 0,
-            meta: { links: { help: "", self: "", site: "" } },
-          },
-        ];
+
+        const defaultCategory: IWordPressCategory = {
+          ID: catId,
+          name: "Uncategorized",
+          slug: "",
+          description: "",
+          post_count: 0,
+          parent: 0,
+          meta: { links: { help: "", self: "", site: "" } },
+        };
+
+        return [catId.toString(), defaultCategory] as [string, IWordPressCategory]; // Explicit type assertion
       }
     }),
   );
@@ -153,14 +159,15 @@ async function transformPost(
 }
 
 async function transformPosts(
-  data: WordPressPostResponse[],
+
 ): Promise<WordPressBlogPosts> {
   if (Array.isArray(data)) {
     const posts = await Promise.all(data.map(transformPost));
     return { found: data.length, posts };
+  } else {
+    const post = await transformPost(data);
+    return { found: 1, posts: [post] };
   }
-  const post = await transformPost(data);
-  return { found: 1, posts: [post] };
 }
 export async function getWordPressBlogPosts({
   offset = 0,
@@ -169,58 +176,16 @@ export async function getWordPressBlogPosts({
   exclude,
   search,
 }: BlogPostParams = {}): Promise<WordPressBlogPosts> {
-  const fields =
-    "author,id,date,title.rendered,excerpt.rendered,content.rendered,status,featured_media,categories,modified";
-  let url = `${BASE_URL}posts?offset=${offset}&per_page=${limit}&_fields=${fields}`;
-
-  const params: Record<string, string | number | undefined> = {};
-
-  // Handle category filtering
-  if (category) {
-    params.categories = category;
-  }
-
-  // Handle exclude parameter (single ID or array of IDs)
-  if (exclude) {
-    const excludeIds = Array.isArray(exclude) ? exclude : [exclude];
-    params.exclude = excludeIds.join(",");
-  }
-
-  if (search) {
-    params.search = search;
-  }
-
-  url = appendUrlParams(url, params);
 
   console.log("Fetching URL:", url);
-  return await wordPressFetch<WordPressPostResponse[]>(url).then(
-    transformPosts,
-  );
+
+  }
 }
 
 export async function getWordPressBlogPost({
   blogId,
 }: SingleBlogParams): Promise<WordPressBlogPost> {
-  const fields =
-    "author,id,date,modified,title.rendered,content.rendered,excerpt.rendered,status,featured_media,categories";
-  const url = `${BASE_URL}posts/${blogId}?_fields=${fields}`;
-  console.log("Fetching URL:", url);
-  return await wordPressFetch<WordPressPostResponse>(url).then(transformPost);
-}
+  if (!blogId || isNaN(parseInt(blogId))) {
+    throw new Error("Invalid blogId");
+  }
 
-function appendUrlParams(
-  url: string,
-  params: Record<string, string | number | undefined>,
-): string {
-  let updatedUrl = url;
-  const queryParams = new URLSearchParams();
-  for (const [key, value] of Object.entries(params)) {
-    if (value !== undefined && value !== null) {
-      queryParams.append(key, encodeURIComponent(value.toString()));
-    }
-  }
-  if (queryParams.toString()) {
-    updatedUrl += `${url.includes("?") ? "&" : "?"}${queryParams.toString()}`;
-  }
-  return updatedUrl;
-}
