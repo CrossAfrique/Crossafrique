@@ -10,7 +10,9 @@ import type {
   IWordPressCategory,
 } from "./types";
 
-const BASE_URL = process.env.WORDPRESS_API_BASE_URL || "https://mx5.88c.myftpupload.com/wp-json/wp/v2/";
+const BASE_URL =
+  process.env.WORDPRESS_API_BASE_URL ||
+  "https://mx5.88c.myftpupload.com/wp-json/wp/v2/";
 const CACHE_TIME = 60 * 60; // 1 hour cache
 
 // Export type alias for backward compatibility
@@ -121,21 +123,7 @@ async function transformPost(
   const categories = await Promise.all(
     post.categories.map(async (catId: number) => {
       try {
-        const categoryResponse = await wordPressFetch<WordPressCategoryResponse>(
-          `${BASE_URL}categories/${catId}`,
-        );
 
-        const category: IWordPressCategory = {
-          ID: catId,
-          name: categoryResponse.name || "Uncategorized",
-          slug: categoryResponse.slug || "",
-          description: categoryResponse.description || "",
-          post_count: categoryResponse.count || 0,
-          parent: 0,
-          meta: { links: { help: "", self: "", site: "" } },
-        };
-
-        return [catId.toString(), category] as [string, IWordPressCategory]; // Explicit type assertion
       } catch (error) {
         console.warn(`Failed to fetch category ${catId}:`, error);
 
@@ -171,7 +159,7 @@ async function transformPost(
 }
 
 async function transformPosts(
-  data: WordPressPostResponse[] | WordPressPostResponse, // Allow single post as well
+
 ): Promise<WordPressBlogPosts> {
   if (Array.isArray(data)) {
     const posts = await Promise.all(data.map(transformPost));
@@ -181,7 +169,6 @@ async function transformPosts(
     return { found: 1, posts: [post] };
   }
 }
-
 export async function getWordPressBlogPosts({
   offset = 0,
   limit = 20,
@@ -189,51 +176,9 @@ export async function getWordPressBlogPosts({
   exclude,
   search,
 }: BlogPostParams = {}): Promise<WordPressBlogPosts> {
-  // Validate inputs
-  if (limit < 0 || limit > 100) {
-    throw new Error("Limit must be between 0 and 100");
-  }
-  if (offset < 0) {
-    throw new Error("Offset cannot be negative");
-  }
-  if (category && (isNaN(Number(category)) || Number(category) < 0)) {
-    throw new Error("Category must be a non-negative number");
-  }
-  if (exclude !== undefined && typeof exclude !== "number") {
-    throw new Error("Exclude must be a number");
-  }
-  if (search && typeof search !== "string") {
-    throw new Error("Search must be a string");
-  }
-
-  const fields =
-    "author,id,date,title.rendered,excerpt.rendered,content.rendered,status,featured_media,categories,modified";
-  let url = `${BASE_URL}posts?offset=${offset}&per_page=${limit}&_fields=${fields}`;
-
-  // Build query parameters safely
-  const params: Record<string, string> = {};
-  if (category) {
-    params.categories = category.toString();
-  }
-  if (exclude !== undefined) {
-    params.exclude = exclude.toString();
-  }
-  if (search) {
-    params.search = encodeURIComponent(search);
-  }
-
-  // Construct URL with validated params
-  const queryString = new URLSearchParams(params).toString();
-  url += queryString ? `&${queryString}` : "";
 
   console.log("Fetching URL:", url);
 
-  try {
-    const data = await wordPressFetch<WordPressPostResponse[]>(url);
-    return await transformPosts(data);
-  } catch (error) {
-    console.error("Error fetching WordPress posts:", error);
-    throw new Error("Unable to retrieve WordPress posts");
   }
 }
 
@@ -244,10 +189,3 @@ export async function getWordPressBlogPost({
     throw new Error("Invalid blogId");
   }
 
-  const fields =
-    "author,id,date,modified,title.rendered,content.rendered,excerpt.rendered,status,featured_media,categories";
-  const url = `${BASE_URL}posts/${blogId}?_fields=${fields}`;
-  console.log("Fetching URL:", url);
-  const data = await wordPressFetch<WordPressPostResponse>(url);
-  return await transformPost(data);
-}
