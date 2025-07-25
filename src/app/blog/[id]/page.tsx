@@ -1,3 +1,4 @@
+
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import { Button } from "@/components/ui/button";
 import parse from "html-react-parser";
@@ -11,7 +12,7 @@ import {
 } from "@/app/blog/_actions";
 
 interface BlogPostPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -64,7 +65,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           fill
           className="object-cover"
           priority
-          suppressHydrationWarning // Added to suppress hydration warnings for images
+          suppressHydrationWarning
         />
         <div className="absolute inset-0 bg-black/50 flex items-end">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
