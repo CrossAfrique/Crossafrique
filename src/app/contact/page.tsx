@@ -58,11 +58,27 @@ export default function ContactPage() {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		// In a real application, this would send the form data to a server
-		console.log(values);
-		setIsSubmitted(true);
-		form.reset();
+	async function onSubmit(values: z.infer<typeof formSchema>) {
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(values),
+			});
+
+			if (response.ok) {
+				setIsSubmitted(true);
+				form.reset();
+			} else {
+				console.error('Failed to submit form');
+				// You could add error state handling here
+			}
+		} catch (error) {
+			console.error('Error submitting form:', error);
+			// You could add error state handling here
+		}
 	}
 
 	return (
