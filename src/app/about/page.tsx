@@ -14,9 +14,9 @@ export default function AboutPage() {
 	return (
 		<>
 			<AboutHero />
+			<LeadershipTeam />
 			<OurStory />
 			<Values />
-			<LeadershipTeam />
 			<CTASection />
 		</>
 	);

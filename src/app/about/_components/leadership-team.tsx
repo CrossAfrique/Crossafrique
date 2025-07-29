@@ -68,17 +68,17 @@ const LeadershipTeam = () => {
 						Our Team of Experts
 					</h2>
 					<p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-						Our team of experts brings together over 50 years of combined
-						experience in renewable energy project development, project finance,
-						and system integration. With deep technical and financial expertise,
-						we design and deploy integrated energy hubs that combine hydrogen,
-						solar PV, battery storage, and smart control systems. Having worked
-						across Africa and Europe, our professionals bridge global innovation
-						with local realities. From early-stage assessments to project
-						structuring and long-term optimization, we are committed to
-						delivering clean, reliable, and scalable energy solutions that
-						support industrial growth, climate resilience, and sustainable
-						development.
+						CrossAfrique’s technical and advisory team has led or supported projects in Nigeria, the Netherlands,
+						and other leading energy innovation hubs across Europe and Africa. The team is led by Joshua Dauda,
+						Director of Projects at CrossAfrique Hydrogen Ltd, who has over a decade of experience in finance,
+						renewable energy project development, and system integration across Africa and Europe. His expertise
+						spans large-scale EU-funded innovation and demonstration projects such as REFORMERS (€20M), where
+						he coordinated the deployment of 12 assets—including hydrogen production systems, battery storage,
+						and heat buffers—alongside their smart integration. In his role as project coordinator for NSH2V Ports
+						(€3.5M), he facilitates the development of hydrogen hubs across four North Sea ports, working with a
+						consortium of nine partners from six European countries. His portfolio also includes work on hydrogen
+						mobility and grid-balancing solutions through research engagements with ENTRANCE (Netherlands) and
+						TotalEnergies, focusing on the alignment of technical innovation with commercial viability.
 					</p>
 				</motion.div>
 
