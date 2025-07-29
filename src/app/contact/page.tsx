@@ -73,9 +73,13 @@ export default function ContactPage() {
 				body: JSON.stringify(values),
 			});
 
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
 			const result = await response.json();
 
-			if (response.ok && result.success) {
+			if (result.success) {
 				setIsSubmitted(true);
 				form.reset();
 			} else {
@@ -83,7 +87,11 @@ export default function ContactPage() {
 			}
 		} catch (error) {
 			console.error('Error submitting form:', error);
-			setSubmitError('Network error occurred. Please try again.');
+			if (error instanceof Error) {
+				setSubmitError(`Network error: ${error.message}`);
+			} else {
+				setSubmitError('Network error occurred. Please try again.');
+			}
 		} finally {
 			setIsSubmitting(false);
 		}
