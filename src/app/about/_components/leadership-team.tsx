@@ -75,9 +75,9 @@ const LeadershipTeam = () => {
 										<p className="text-emerald-600 dark:text-emerald-400 font-medium mb-3 text-sm">
 											Director of Projects
 										</p>
-										<p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
+										{/* <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
 											Leading renewable energy innovation across Africa and Europe
-										</p>
+										</p> */}
 										<div className="flex justify-center space-x-3">
 											<a
 												href="#"
