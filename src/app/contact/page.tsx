@@ -45,6 +45,8 @@ const formSchema = z.object({
 
 export default function ContactPage() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitError, setSubmitError] = useState<string | null>(null);
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -59,6 +61,9 @@ export default function ContactPage() {
 	});
 
 	async function onSubmit(values: z.infer<typeof formSchema>) {
+		setIsSubmitting(true);
+		setSubmitError(null);
+		
 		try {
 			const response = await fetch('/api/contact', {
 				method: 'POST',
@@ -68,16 +73,19 @@ export default function ContactPage() {
 				body: JSON.stringify(values),
 			});
 
-			if (response.ok) {
+			const result = await response.json();
+
+			if (response.ok && result.success) {
 				setIsSubmitted(true);
 				form.reset();
 			} else {
-				console.error('Failed to submit form');
-				// You could add error state handling here
+				setSubmitError(result.error || 'Failed to submit form');
 			}
 		} catch (error) {
 			console.error('Error submitting form:', error);
-			// You could add error state handling here
+			setSubmitError('Network error occurred. Please try again.');
+		} finally {
+			setIsSubmitting(false);
 		}
 	}
 
@@ -405,11 +413,27 @@ export default function ContactPage() {
 												)}
 											/>
 
+											{submitError && (
+												<div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md">
+													<p className="text-red-600 dark:text-red-400 text-sm">{submitError}</p>
+												</div>
+											)}
+
 											<Button
 												type="submit"
-												className="w-full bg-emerald-600 hover:bg-emerald-700"
+												disabled={isSubmitting}
+												className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50"
 											>
-												<Send className="mr-2 h-4 w-4" /> Send Message
+												{isSubmitting ? (
+													<>
+														<div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+														Sending...
+													</>
+												) : (
+													<>
+														<Send className="mr-2 h-4 w-4" /> Send Message
+													</>
+												)}
 											</Button>
 										</form>
 									</Form>
