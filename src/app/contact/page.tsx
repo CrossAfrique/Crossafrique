@@ -260,6 +260,8 @@ export default function ContactPage() {
 							</div> */}
 						</motion.div>
 
+						{/* Contact form temporarily commented out - users can message via email link */}
+						{/* 
 						<motion.div
 							initial={{ opacity: 0, x: 30 }}
 							animate={{ opacity: 1, x: 0 }}
@@ -447,6 +449,35 @@ export default function ContactPage() {
 									</Form>
 								</>
 							)}
+						</motion.div>
+						*/}
+						<motion.div
+							initial={{ opacity: 0, x: 30 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.6 }}
+							className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg"
+						>
+							<div className="text-center py-12">
+								<div className="flex justify-center mb-4">
+									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full">
+										<Mail className="w-12 h-12 text-emerald-600 dark:text-emerald-400" />
+									</div>
+								</div>
+								<h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+									Contact Us Directly
+								</h3>
+								<p className="text-gray-700 dark:text-gray-300 mb-6">
+									Please reach out to us directly via email for any inquiries, project discussions, or partnership opportunities.
+								</p>
+								<Button
+									asChild
+									className="bg-emerald-600 hover:bg-emerald-700"
+								>
+									<a href="mailto:info@crossafriquehydrogen.com">
+										<Mail className="mr-2 h-4 w-4" /> Send Email
+									</a>
+								</Button>
+							</div>
 						</motion.div>
 					</div>
 				</div>
