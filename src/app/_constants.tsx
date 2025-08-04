@@ -1,7 +1,7 @@
 import EnergyHubImg from "@/app/_assets/images/energy-hub.jpg";
 import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
 import H2RealImg from "@/app/_assets/images/h2real.png";
-import H2RingImg from "@/app/_assets/images/h2ring.png";
+import CUHubImg from "@/app/_assets/images/CU_hub.png";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import SystemArchitectureImg from "@/app/_assets/images/system-architecture.jpg";
 import { BookOpen, ChartArea, Factory, Zap } from "lucide-react";
@@ -12,7 +12,7 @@ export const projects = [
 		title: "Covenant University Green Energy Hub",
 		description:
 			"The Covenant University Green Energy Hub is a first-of-its-kind demonstration project showcasing integrated renewable energy and hydrogen systems within a live university campus environment. Designed as a modular smart microgrid, the Hub combines solar PV, a PEM electrolyzer, hydrogen storage, a fuel cell, and an advanced energy management system to provide clean, reliable power and enable practical research, education, and capacity building. Developed in partnership with Covenant University, CrossAfrique Hydrogen, Dara-Manihot Industries, and Centre of Expertise Water (NL), the project aims to decarbonize campus operations, enable hands-on learning in solar-hydrogen systems, and serve as a replicable model for low-carbon energy deployment across institutions and industrial zones in Africa.",
-		image: H2RingImg,
+		image: CUHubImg,
 		location: "Ota, Ogun State, Nigeria",
 		status: "Planning Phase",
 		year: "2025",
