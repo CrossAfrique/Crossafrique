@@ -9,11 +9,11 @@ import { BookOpen, ChartArea, Factory, Zap } from "lucide-react";
 export const projects = [
 	{
 		id: "1",
-		title: "H2RING - Hydrogen hub for Research, Innovation and Green Growth",
+		title: "Covenant University Green Energy Hub",
 		description:
-			"An innovation-led hydrogen hub integrating solar PV with a electrolyzer and recycled wastewater system, designed to power research, pilot industrial applications, and local skill development.",
+			"The Covenant University Green Energy Hub is a first-of-its-kind demonstration project showcasing integrated renewable energy and hydrogen systems within a live university campus environment. Designed as a modular smart microgrid, the Hub combines solar PV, a PEM electrolyzer, hydrogen storage, a fuel cell, and an advanced energy management system to provide clean, reliable power and enable practical research, education, and capacity building. Developed in partnership with Covenant University, CrossAfrique Hydrogen, Dara-Manihot Industries, and Centre of Expertise Water (NL), the project aims to decarbonize campus operations, enable hands-on learning in solar-hydrogen systems, and serve as a replicable model for low-carbon energy deployment across institutions and industrial zones in Africa.",
 		image: H2RingImg,
-		location: "Nigeria",
+		location: "Ota, Ogun State, Nigeria",
 		status: "Planning Phase",
 		year: "2025",
 	},
