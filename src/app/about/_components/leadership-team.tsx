@@ -8,9 +8,27 @@ import { useState } from "react";
 const LeadershipTeam = () => {
 	const [isExpanded, setIsExpanded] = useState(false);
 
-	const shortBio = "Joshua Dauda is the Founder and Project Development and Finance Lead at CrossAfrique Hydrogen. With over a decade of experience spanning finance and renewable energy infrastructure, he has led multidisciplinary projects across Africa and Europe.";
+	const shortBio = (
+		<>
+			<p className="mb-4">
+				Joshua Dauda is the Founder and Project Development and Finance Lead at CrossAfrique Hydrogen. With over a decade of experience spanning finance and renewable energy infrastructure, he has led multidisciplinary projects across Africa and Europe.
+			</p>
+		</>
+	);
 
-	const fullBio = "Joshua Dauda is the Founder and Project Development and Finance Lead at CrossAfrique Hydrogen. With over a decade of experience spanning finance and renewable energy infrastructure, he has led multidisciplinary projects across Africa and Europe. Joshua brings expertise in strategic project development, financial structuring, technical coordination, and donor engagement. He has contributed to the development and implementation of clean energy infrastructure projects valued at over €50 million and has played key roles in EU-funded programs such as the REFORMERS project, where he coordinated hydrogen asset deployment and digital twin integration, and NSH2V Ports, where he led development of hydrogen hub strategies across four European ports. He holds a Master's degree in Interdisciplinary Business with a focus on Renewable Energy from Hanze University in the Netherlands. His professional certifications include Hydrogen Energy (Engineering Institute of Technology, Australia), Climate & Renewable Energy Finance (Frankfurt School of Finance & Management, Germany), and Sustainable Energy and Water Technology (Van Hall Larenstein University, Netherlands).";
+	const fullBio = (
+		<>
+			<p className="mb-4">
+				Joshua Dauda is the Founder and Project Development and Finance Lead at CrossAfrique Hydrogen. With over a decade of experience spanning finance and renewable energy infrastructure, he has led multidisciplinary projects across Africa and Europe.
+			</p>
+			<p className="mb-4">
+				Joshua brings expertise in strategic project development, financial structuring, technical coordination, and donor engagement. He has contributed to the development and implementation of clean energy infrastructure projects valued at over €50 million and has played key roles in EU-funded programs such as the REFORMERS project, where he coordinated hydrogen asset deployment and digital twin integration, and NSH2V Ports, where he led development of hydrogen hub strategies across four European ports.
+			</p>
+			<p className="mb-4">
+				He holds a Master's degree in Interdisciplinary Business with a focus on Renewable Energy from Hanze University in the Netherlands. His professional certifications include Hydrogen Energy (Engineering Institute of Technology, Australia), Climate & Renewable Energy Finance (Frankfurt School of Finance & Management, Germany), and Sustainable Energy and Water Technology (Van Hall Larenstein University, Netherlands).
+			</p>
+		</>
+	);
 
 	return (
 		<section className="py-20 bg-gray-50 dark:bg-gray-800">
@@ -96,9 +114,9 @@ const LeadershipTeam = () => {
 							{/* Bio Content Section */}
 							<div className="flex-1">
 								<div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-									<p>
+									<div>
 										{isExpanded ? fullBio : shortBio}
-									</p>
+									</div>
 									<button
 										onClick={() => setIsExpanded(!isExpanded)}
 										className="mt-4 inline-flex items-center text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium transition-colors"

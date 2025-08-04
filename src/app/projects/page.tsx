@@ -62,7 +62,7 @@ export default function ProjectsPage() {
 										{project.title}
 									</h3>
 									<p className="text-gray-700 dark:text-gray-300 mb-4">
-										{project.description}
+										{project.shortDescription || project.description}
 									</p>
 									<div className="flex flex-col space-y-2 mb-4">
 										<div className="flex items-center text-sm text-gray-500 dark:text-gray-400">

@@ -19,9 +19,11 @@ export const projects = [
 	},
 	{
 		id: "2",
-		title: "Hydrogen Research, Education, and Applied Learning",
+		title: "H2Real",
+		shortDescription:
+			"H2Real is an industrial-scale demonstration project that transforms residual waste into clean hydrogen, showcasing the economic and environmental benefits of integrated renewable energy and hydrogen systems.",
 		description:
-			"H2REAL is a capacity-building and applied research initiative focused on developing the hydrogen economy in Africa. The program combines foundational education, international collaboration, and applied research to prepare the next generation of hydrogen professionals and bridge the African and European hydrogen ecosystems.",
+			"H2Real is an industrial-scale demonstration project that transforms residual waste into clean hydrogen, showcasing the economic and environmental benefits of integrated renewable energy and hydrogen systems.\n\nThe project addresses critical waste management challenges by converting organic waste into valuable green hydrogen, which is then used to power industrial processes and support clean energy storage.\n\nThrough a strategic partnership combining advanced biogas-to-hydrogen technology with solar PV and smart energy management, H2Real demonstrates how waste-to-energy systems can contribute to both waste reduction and renewable energy goals. The project aims to provide a replicable model for waste-to-hydrogen deployment across industrial zones, municipalities, and waste management facilities throughout Africa.",
 		image: H2RealImg,
 		location: "Virtual & Physical",
 		status: "In Development",
