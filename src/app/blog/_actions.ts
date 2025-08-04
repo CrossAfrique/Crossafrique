@@ -121,7 +121,7 @@ async function transformPost(
   }
 
   const categories = await Promise.all(
-    post.categories.map(async (catId: number) => {
+    (post.categories || []).map(async (catId: number) => {
       try {
 
       } catch (error) {

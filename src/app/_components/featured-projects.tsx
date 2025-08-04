@@ -8,16 +8,11 @@ import Link from "next/link";
 
 const FEATURED_PROJECTS = [
 	{
-		name: "Green Energy Hub",
+		name: "CU Green Energy Hub",
 		location: "Nigeria",
 		description:
 			"A research and industrial hydrogen hub integrating solar, electrolysis, and recycled water use in partnership with academia and industry.",
 		metrics: [
-			{
-				icon: <Zap className="w-5 h-5 text-emerald-600" />,
-				label: "Output",
-				value: "1 MW electrolyzer",
-			},
 			{
 				icon: <TrendingDown className="w-5 h-5 text-emerald-600" />,
 				label: "Key Feature",
@@ -133,7 +128,7 @@ function ProjectCard({
 					<p className="text-gray-700 dark:text-gray-300 mb-6">
 						{project.description}
 					</p>
-					<div className="grid grid-cols-2 gap-4">
+					<div className="grid grid-cols-1 gap-4">
 						{project.metrics.map((metric) => (
 							<div key={metric.label} className="flex items-center">
 								<div className="mr-2">{metric.icon}</div>

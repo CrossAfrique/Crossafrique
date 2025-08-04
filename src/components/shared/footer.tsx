@@ -77,13 +77,8 @@ const CONTACT_INFO = [
 		icon: Mail,
 	},
 	{
-		label: "Phone",
-		href: "tel:+254700000000",
-		icon: Phone,
-	},
-	{
-		label: "Address",
-		href: "https://www.google.com/maps/place/Crossafrique+Hydrogen/@-1.2833314,36.821934,15z/data=!4m6!3m5!1s0x0:0x4a152e4064d87e1c!8m2!3d-1.2833314!4d36.821934!16s%2Fg%2F11c2970_80?entry=ttu",
+		label: "Nigeria: 6, Adenuga Street, Harmony Estate, Gbagada, Lagos",
+		href: "https://www.google.com/maps/search/6+Adenuga+Street+Harmony+Estate+Gbagada+Lagos",
 		icon: MapPin,
 	},
 ];

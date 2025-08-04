@@ -1,7 +1,7 @@
 import EnergyHubImg from "@/app/_assets/images/energy-hub.jpg";
 import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
 import H2RealImg from "@/app/_assets/images/h2real.png";
-import H2RingImg from "@/app/_assets/images/h2ring.png";
+import CUHubImg from "@/app/_assets/images/CU_hub.png";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import SystemArchitectureImg from "@/app/_assets/images/system-architecture.jpg";
 import { BookOpen, ChartArea, Factory, Zap } from "lucide-react";
@@ -9,19 +9,21 @@ import { BookOpen, ChartArea, Factory, Zap } from "lucide-react";
 export const projects = [
 	{
 		id: "1",
-		title: "H2RING - Hydrogen hub for Research, Innovation and Green Growth",
+		title: "Covenant University Green Energy Hub",
 		description:
-			"An innovation-led hydrogen hub integrating solar PV with a electrolyzer and recycled wastewater system, designed to power research, pilot industrial applications, and local skill development.",
-		image: H2RingImg,
-		location: "Nigeria",
-		status: "Planning Phase",
+			"The Covenant University Green Energy Hub is a first-of-its-kind demonstration project showcasing integrated renewable energy and hydrogen systems within a live university campus environment.\n\nDesigned as a modular smart microgrid, the Hub combines solar PV, a PEM electrolyzer, hydrogen storage, a fuel cell, and an advanced energy management system to provide clean, reliable power and enable practical research, education, and capacity building.\n\nDeveloped in partnership with Covenant University, CrossAfrique Hydrogen, Dara-Manihot Industries, and Centre of Expertise Water (NL), the project aims to decarbonize campus operations, enable hands-on learning in solar-hydrogen systems, and serve as a replicable model for low-carbon energy deployment across institutions and industrial zones in Africa.",
+		shortDescription: "The Covenant University Green Energy Hub is a first-of-its-kind demonstration project showcasing integrated renewable energy and hydrogen systems within a live university campus environment.",
+		image: CUHubImg,
+		location: "Ota, Ogun State, Nigeria",
+		status: "In Development",
 		year: "2025",
 	},
 	{
 		id: "2",
-		title: "Hydrogen Research, Education, and Applied Learning",
+		title: "H2Real",
 		description:
-			"H2REAL is a capacity-building and applied research initiative focused on developing the hydrogen economy in Africa. The program combines foundational education, international collaboration, and applied research to prepare the next generation of hydrogen professionals and bridge the African and European hydrogen ecosystems.",
+		"H2Real is an industrial-scale demonstration project that transforms residual waste into clean hydrogen, showcasing the economic and environmental benefits of integrated renewable energy and hydrogen systems.\n\nThe project addresses critical waste management challenges by converting organic waste into valuable green hydrogen, which is then used to power industrial processes and support clean energy storage.\n\nThrough a strategic partnership combining advanced biogas-to-hydrogen technology with solar PV and smart energy management, H2Real demonstrates how waste-to-energy systems can contribute to both waste reduction and renewable energy goals. The project aims to provide a replicable model for waste-to-hydrogen deployment across industrial zones, municipalities, and waste management facilities throughout Africa.",
+		shortDescription: "H2Real is an industrial-scale demonstration project that transforms residual waste into clean hydrogen, showcasing the economic and environmental benefits of integrated renewable energy and hydrogen systems.",
 		image: H2RealImg,
 		location: "Virtual & Physical",
 		status: "In Development",

@@ -126,7 +126,13 @@ export default function ProjectDetailPage() {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6 }}
 						>
-							<div>{parse(project.description)}</div>
+							<div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+								{project.description.split('\n\n').map((paragraph, index) => (
+									<p key={index} className="mb-4">
+										{paragraph}
+									</p>
+								))}
+							</div>
 						</motion.div>
 
 						{/* <motion.div

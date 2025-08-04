@@ -48,7 +48,10 @@ export default function FeaturedPosts({
                 <div className="p-0">
                   <div className="flex items-center mb-3">
                     <span className="text-xs font-medium px-2 py-1 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full">
-                       {post.categories && Object.values(post.categories).length > 0 ? (Object.values(post.categories)[0] as any)?.name || "Uncategorized" : "Uncategorized"}
+                      {(() => {
+                        const categories = post.categories ? Object.values(post.categories) : [];
+                        return categories.length > 0 ? categories[0]?.name || "Uncategorized" : "Uncategorized";
+                      })()}
                     </span>
                   </div>
                   <Link href={`/blog/${post.ID}`}>

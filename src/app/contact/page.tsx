@@ -45,6 +45,8 @@ const formSchema = z.object({
 
 export default function ContactPage() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitError, setSubmitError] = useState<string | null>(null);
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -58,11 +60,41 @@ export default function ContactPage() {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		// In a real application, this would send the form data to a server
-		console.log(values);
-		setIsSubmitted(true);
-		form.reset();
+	async function onSubmit(values: z.infer<typeof formSchema>) {
+		setIsSubmitting(true);
+		setSubmitError(null);
+		
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(values),
+			});
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
+			const result = await response.json();
+
+			if (result.success) {
+				setIsSubmitted(true);
+				form.reset();
+			} else {
+				setSubmitError(result.error || 'Failed to submit form');
+			}
+		} catch (error) {
+			console.error('Error submitting form:', error);
+			if (error instanceof Error) {
+				setSubmitError(`Network error: ${error.message}`);
+			} else {
+				setSubmitError('Network error occurred. Please try again.');
+			}
+		} finally {
+			setIsSubmitting(false);
+		}
 	}
 
 	return (
@@ -157,12 +189,12 @@ export default function ContactPage() {
 									</div>
 									<div>
 										<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-											Business Hours
+											Address
 										</h3>
 										<p className="text-gray-700 dark:text-gray-300">
-											Monday - Friday: 8:00 AM - 5:00 PM
+											Nigeria: 6, Adenuga Street, 
 											<br />
-											Saturday - Sunday: Closed
+											Harmony Estate, Gbagada, Lagos
 										</p>
 									</div>
 								</div>
@@ -228,6 +260,8 @@ export default function ContactPage() {
 							</div> */}
 						</motion.div>
 
+						{/* Contact form temporarily commented out - users can message via email link */}
+						{/* 
 						<motion.div
 							initial={{ opacity: 0, x: 30 }}
 							animate={{ opacity: 1, x: 0 }}
@@ -389,16 +423,61 @@ export default function ContactPage() {
 												)}
 											/>
 
+											{submitError && (
+												<div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md">
+													<p className="text-red-600 dark:text-red-400 text-sm">{submitError}</p>
+												</div>
+											)}
+
 											<Button
 												type="submit"
-												className="w-full bg-emerald-600 hover:bg-emerald-700"
+												disabled={isSubmitting}
+												className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50"
 											>
-												<Send className="mr-2 h-4 w-4" /> Send Message
+												{isSubmitting ? (
+													<>
+														<div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+														Sending...
+													</>
+												) : (
+													<>
+														<Send className="mr-2 h-4 w-4" /> Send Message
+													</>
+												)}
 											</Button>
 										</form>
 									</Form>
 								</>
 							)}
+						</motion.div>
+						*/}
+						<motion.div
+							initial={{ opacity: 0, x: 30 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.6 }}
+							className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg"
+						>
+							<div className="text-center py-12">
+								<div className="flex justify-center mb-4">
+									<div className="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full">
+										<Mail className="w-12 h-12 text-emerald-600 dark:text-emerald-400" />
+									</div>
+								</div>
+								<h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+									Contact Us Directly
+								</h3>
+								<p className="text-gray-700 dark:text-gray-300 mb-6">
+									Please reach out to us directly via email for any inquiries, project discussions, or partnership opportunities.
+								</p>
+								<Button
+									asChild
+									className="bg-emerald-600 hover:bg-emerald-700"
+								>
+									<a href="mailto:info@crossafriquehydrogen.com">
+										<Mail className="mr-2 h-4 w-4" /> Send Email
+									</a>
+								</Button>
+							</div>
 						</motion.div>
 					</div>
 				</div>
