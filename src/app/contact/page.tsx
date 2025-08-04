@@ -192,9 +192,9 @@ export default function ContactPage() {
 											Address
 										</h3>
 										<p className="text-gray-700 dark:text-gray-300">
-											Monday - Friday: 8:00 AM - 5:00 PM
+											Nigeria: 6, Adenuga Street, 
 											<br />
-											Saturday - Sunday: Closed
+											Harmony Estate, Gbagada, Lagos
 										</p>
 									</div>
 								</div>
