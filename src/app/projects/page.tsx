@@ -45,7 +45,7 @@ export default function ProjectsPage() {
 							transition={{ duration: 0.5, delay: index * 0.1 }}
 							className="max-w-[700px]"
 						>
-							<Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
+							<Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col">
 								<div className="relative h-60 w-full">
 									<Image
 										src={project.image}
@@ -57,12 +57,12 @@ export default function ProjectsPage() {
 										{project.status}
 									</div>
 								</div>
-								<CardContent className="p-6">
+								<CardContent className="p-6 flex flex-col flex-grow">
 									<h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
 										{project.title}
 									</h3>
-									<p className="text-gray-700 dark:text-gray-300 mb-4">
-										{project.shortDescription || project.description}
+									<p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-4 flex-grow">
+										{project.shortDescription || project.description.split('\n\n')[0]}
 									</p>
 									<div className="flex flex-col space-y-2 mb-4">
 										<div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
@@ -74,7 +74,7 @@ export default function ProjectsPage() {
 											<span>{project.year}</span>
 										</div>
 									</div>
-									<Link href={`/projects/${project.id}`}>
+									<Link href={`/projects/${project.id}`} className="mt-auto">
 										<Button
 											variant="outline"
 											className="w-full flex items-center justify-center"
