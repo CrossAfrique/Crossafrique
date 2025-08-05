@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { Linkedin, Twitter, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import JoshuaImage from "@/app/_assets/images/Image for website.png";
 
 const LeadershipTeam = () => {
 	const [isExpanded, setIsExpanded] = useState(false);
@@ -81,9 +82,12 @@ const LeadershipTeam = () => {
 								<div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20 rounded-lg p-6 border border-emerald-200 dark:border-emerald-700 max-w-sm mx-auto lg:mx-0">
 									<div className="text-center">
 										<div className="relative w-32 h-32 mx-auto mb-4">
-											<div className="w-full h-full rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-												JD
-											</div>
+											<Image
+												src={JoshuaImage}
+												alt="Joshua Dauda"
+												fill
+												className="rounded-full object-cover shadow-lg"
+											/>
 										</div>
 										<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
 											Joshua Dauda
