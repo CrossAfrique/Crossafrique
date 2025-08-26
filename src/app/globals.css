@@ -122,6 +122,52 @@
   .clip-logo {
 		clip-path: polygon(10% 10%, 80% 10%, 70% 70%, 10% 70%);
   }
+  /* Custom blog content styling */
+  .blog-content {
+    @apply text-base leading-relaxed antialiased;
+  }
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4,
+  .blog-content h5,
+  .blog-content h6 {
+    @apply mt-8 mb-4 font-bold leading-tight;
+  }
+  .blog-content h1 { @apply text-4xl; }
+  .blog-content h2 { @apply text-3xl; }
+  .blog-content h3 { @apply text-2xl; }
+  .blog-content h4 { @apply text-xl; }
+  .blog-content h5 { @apply text-lg; }
+  .blog-content h6 { @apply text-base; }
+  .blog-content p {
+    @apply mb-4;
+  }
+  .blog-content a {
+    @apply text-primary underline underline-offset-2;
+  }
+  .blog-content ul,
+  .blog-content ol {
+    @apply mb-4 pl-6;
+  }
+  .blog-content li {
+    @apply mb-2;
+  }
+  .blog-content blockquote {
+    @apply border-l-4 border-primary pl-4 italic;
+  }
+  .blog-content img {
+    @apply my-4 rounded-md;
+  }
+  .blog-content code {
+    @apply font-mono text-sm;
+  }
+  .blog-content pre {
+    @apply p-4 overflow-x-auto rounded-md bg-muted;
+  }
+  .blog-content pre code {
+    @apply text-sm;
+  }
 }
 
 @tailwind base;

@@ -60,10 +60,13 @@ export default function FeaturedPosts({
                     </h3>
                   </Link>
                   <div
-                    className="text-gray-700 dark:text-gray-300 mb-4"
+                    className="text-gray-700 dark:text-gray-300 mb-4 prose prose-sm dark:prose-invert prose-p:text-gray-700 dark:prose-p:text-gray-300"
                     dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.excerpt || "", {
-                      allowedTags: sanitizeHtml.defaults.allowedTags,
-                      allowedAttributes: sanitizeHtml.defaults.allowedAttributes,
+                      allowedTags: ['p', 'br', 'strong', 'em', 'a', 'span'],
+                      allowedAttributes: {
+                        'a': ['href', 'title', 'target'],
+                        'span': ['style', 'class']
+                      },
                     }) }}
                   />
                 </div>

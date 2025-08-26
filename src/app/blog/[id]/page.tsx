@@ -113,8 +113,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               Back to all articles
             </Link>
 
-            <article className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-emerald-600 hover:prose-a:text-emerald-700">
-              <div>{parse(post.content || "")}</div>
+            <article className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-emerald-600 hover:prose-a:text-emerald-700 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-strong:text-gray-900 dark:prose-strong:text-white prose-ul:text-gray-700 dark:prose-ul:text-gray-300 prose-ol:text-gray-700 dark:prose-ol:text-gray-300">
+              <div 
+                className="blog-content"
+                dangerouslySetInnerHTML={{ 
+                  __html: post.content || "" 
+                }}
+              />
             </article>
 
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">

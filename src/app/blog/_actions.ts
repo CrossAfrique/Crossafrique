@@ -154,17 +154,32 @@ async function transformPost(
     }),
   );
 
+  // Clean and format content
+  const cleanContent = post.content?.rendered
+    ? post.content.rendered
+        .replace(/\n\s*\n/g, '\n\n') // Normalize paragraph breaks
+        .replace(/<p>\s*<\/p>/g, '') // Remove empty paragraphs
+        .trim()
+    : "";
+
+  const cleanExcerpt = post.excerpt.rendered
+    ? post.excerpt.rendered
+        .replace(/\[\&hellip;\]/g, '...')
+        .replace(/<p>\s*<\/p>/g, '') // Remove empty paragraphs
+        .trim()
+    : "";
+
   return {
     ID: post.id,
     author,
     date: post.date,
     title: post.title.rendered,
-    excerpt: post.excerpt.rendered,
+    excerpt: cleanExcerpt,
     status: post.status,
     featured_image: post.featured_media
       ? `${BASE_URL}media/${post.featured_media}`
       : "",
-    content: post.content?.rendered,
+    content: cleanContent,
     modified: post.modified,
     categories: Object.fromEntries(categories),
   };
