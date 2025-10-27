@@ -123,7 +123,21 @@ async function transformPost(
   const categories = await Promise.all(
     (post.categories || []).map(async (catId: number) => {
       try {
+        const categoryResponse = await wordPressFetch<WordPressCategoryResponse>(
+          `${BASE_URL}categories/${catId}`,
+        );
 
+        const category: IWordPressCategory = {
+          ID: categoryResponse.id,
+          name: categoryResponse.name,
+          slug: categoryResponse.slug,
+          description: categoryResponse.description,
+          post_count: categoryResponse.count,
+          parent: 0,
+          meta: { links: { help: "", self: "", site: "" } },
+        };
+
+        return [catId.toString(), category] as [string, IWordPressCategory];
       } catch (error) {
         console.warn(`Failed to fetch category ${catId}:`, error);
 
@@ -137,7 +151,7 @@ async function transformPost(
           meta: { links: { help: "", self: "", site: "" } },
         };
 
-        return [catId.toString(), defaultCategory] as [string, IWordPressCategory]; // Explicit type assertion
+        return [catId.toString(), defaultCategory] as [string, IWordPressCategory];
       }
     }),
   );
@@ -159,7 +173,7 @@ async function transformPost(
 }
 
 async function transformPosts(
-
+  data: WordPressPostResponse | WordPressPostResponse[],
 ): Promise<WordPressBlogPosts> {
   if (Array.isArray(data)) {
     const posts = await Promise.all(data.map(transformPost));
@@ -169,6 +183,7 @@ async function transformPosts(
     return { found: 1, posts: [post] };
   }
 }
+
 export async function getWordPressBlogPosts({
   offset = 0,
   limit = 20,
@@ -176,9 +191,24 @@ export async function getWordPressBlogPosts({
   exclude,
   search,
 }: BlogPostParams = {}): Promise<WordPressBlogPosts> {
+  const params = new URLSearchParams();
+  params.append("per_page", limit.toString());
+  params.append("offset", offset.toString());
+  params.append("_embed", "true");
+  
+  if (category) params.append("categories", category);
+  if (exclude) params.append("exclude", exclude.toString());
+  if (search) params.append("search", search);
 
+  const url = `${BASE_URL}posts?${params.toString()}`;
   console.log("Fetching URL:", url);
 
+  try {
+    const data = await wordPressFetch<WordPressPostResponse[]>(url);
+    return await transformPosts(data);
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    return { found: 0, posts: [] };
   }
 }
 
@@ -189,3 +219,14 @@ export async function getWordPressBlogPost({
     throw new Error("Invalid blogId");
   }
 
+  const url = `${BASE_URL}posts/${blogId}`;
+  console.log("Fetching single post URL:", url);
+
+  try {
+    const data = await wordPressFetch<WordPressPostResponse>(url);
+    return await transformPost(data);
+  } catch (error) {
+    console.error("Error fetching blog post:", error);
+    throw new Error("Failed to fetch blog post");
+  }
+}
