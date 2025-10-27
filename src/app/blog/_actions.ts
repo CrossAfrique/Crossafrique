@@ -45,6 +45,18 @@ interface WordPressCategoryResponse {
   count: number;
 }
 
+interface WordPressMediaResponse {
+  id: number;
+  source_url: string;
+  media_details: {
+    sizes: {
+      full?: { source_url: string };
+      large?: { source_url: string };
+      medium?: { source_url: string };
+    };
+  };
+}
+
 async function wordPressFetch<T>(
   url: string,
   signal?: AbortSignal,
@@ -156,6 +168,18 @@ async function transformPost(
     }),
   );
 
+  let featuredImage = "";
+  if (post.featured_media) {
+    try {
+      const mediaResponse = await wordPressFetch<WordPressMediaResponse>(
+        `${BASE_URL}media/${post.featured_media}`,
+      );
+      featuredImage = mediaResponse.source_url || "";
+    } catch (error) {
+      console.warn(`Failed to fetch featured media ${post.featured_media}:`, error);
+    }
+  }
+
   return {
     ID: post.id,
     author,
@@ -163,9 +187,7 @@ async function transformPost(
     title: post.title.rendered,
     excerpt: post.excerpt.rendered,
     status: post.status,
-    featured_image: post.featured_media
-      ? `${BASE_URL}media/${post.featured_media}`
-      : "",
+    featured_image: featuredImage,
     content: post.content?.rendered,
     modified: post.modified,
     categories: Object.fromEntries(categories),
