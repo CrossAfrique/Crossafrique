@@ -1,7 +1,7 @@
 
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import { Button } from "@/components/ui/button";
-import parse, { domToReact, HTMLReactParserOptions, Element, DOMNode } from "html-react-parser";
+import parse from "html-react-parser";
 import { ArrowLeft, Calendar, Share2, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
