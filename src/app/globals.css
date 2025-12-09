@@ -240,3 +240,15 @@
   flex: 1;
   min-width: 250px;
 }
+
+/* Preserve Elementor inline styles */
+.prose [style] {
+  all: revert;
+}
+
+.prose span[style],
+.prose div[style],
+.prose p[style] {
+  color: inherit;
+  background-color: inherit;
+}
