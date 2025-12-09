@@ -13,12 +13,7 @@ import type {
 const BASE_URL =
   process.env.WORDPRESS_API_BASE_URL ||
   "https://mx5.88c.myftpupload.com/wp-json/wp/v2/";
-const CACHE_TIME = 60 * 20; // 20 minutes cache
-
-function extractFirstImageFromContent(htmlContent: string): string | null {
-  const imgMatch = htmlContent.match(/<img[^>]+src=["']([^"']+)["']/i);
-  return imgMatch ? imgMatch[1] : null;
-}
+const CACHE_TIME = 60 * 60; // 1 hour cache
 
 // Export type alias for backward compatibility
 export type WordPressPost = WordPressBlogPost;
@@ -182,14 +177,6 @@ async function transformPost(
       featuredImage = mediaResponse.source_url || "";
     } catch (error) {
       console.warn(`Failed to fetch featured media ${post.featured_media}:`, error);
-    }
-  }
-
-  // If no featured image, try to extract the first image from content
-  if (!featuredImage && post.content?.rendered) {
-    const extractedImage = extractFirstImageFromContent(post.content.rendered);
-    if (extractedImage) {
-      featuredImage = extractedImage;
     }
   }
 
