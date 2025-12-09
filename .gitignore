@@ -35,6 +35,8 @@ yarn-error.log*
 
 #config files
 .replit
+.next
+.git
 
 # vercel
 .vercel
@@ -43,3 +45,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .qodo
+attached_assets
