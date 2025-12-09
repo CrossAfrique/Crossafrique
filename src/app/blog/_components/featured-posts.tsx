@@ -62,8 +62,24 @@ export default function FeaturedPosts({
                   <div
                     className="text-gray-700 dark:text-gray-300 mb-4"
                     dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.excerpt || "", {
-                      allowedTags: sanitizeHtml.defaults.allowedTags,
-                      allowedAttributes: sanitizeHtml.defaults.allowedAttributes,
+                      allowedTags: [...sanitizeHtml.defaults.allowedTags, 'span', 'div', 'figure', 'figcaption', 'img'],
+                      allowedAttributes: {
+                        ...sanitizeHtml.defaults.allowedAttributes,
+                        '*': ['style', 'class'],
+                        'img': ['src', 'alt', 'width', 'height', 'class', 'style'],
+                      },
+                      allowedStyles: {
+                        '*': {
+                          'color': [/.*/],
+                          'background-color': [/.*/],
+                          'background': [/.*/],
+                          'font-size': [/.*/],
+                          'font-weight': [/.*/],
+                          'text-align': [/.*/],
+                          'padding': [/.*/],
+                          'margin': [/.*/],
+                        },
+                      },
                     }) }}
                   />
                 </div>
