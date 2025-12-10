@@ -39,7 +39,7 @@ export default function FeaturedPosts({
                   <div className="relative h-48 w-full">
                     <Image
                       src={post.featured_image || IndustrialApplicationImg}
-                      alt={post.title}
+                      alt={typeof post.title === 'string' ? post.title : 'Blog post'}
                       fill
                       className="object-cover"
                     />
@@ -55,15 +55,35 @@ export default function FeaturedPosts({
                     </span>
                   </div>
                   <Link href={`/blog/${post.ID}`}>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-                      {post.title}
-                    </h3>
+                    <h3 
+                      className="text-xl font-semibold mb-3 text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                      dangerouslySetInnerHTML={{ __html: sanitizeHtml(
+                        typeof post.title === 'string' ? post.title : (post.title as any)?.rendered || '', 
+                        { allowedTags: [], allowedAttributes: {} }
+                      ) }}
+                    />
                   </Link>
                   <div
-                    className="text-gray-700 dark:text-gray-300 mb-4"
+                    className="text-gray-700 dark:text-gray-300 mb-4 prose-excerpt"
                     dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.excerpt || "", {
-                      allowedTags: sanitizeHtml.defaults.allowedTags,
-                      allowedAttributes: sanitizeHtml.defaults.allowedAttributes,
+                      allowedTags: [...sanitizeHtml.defaults.allowedTags, 'span', 'div', 'figure', 'figcaption'],
+                      allowedAttributes: {
+                        ...sanitizeHtml.defaults.allowedAttributes,
+                        '*': ['style', 'class'],
+                      },
+                      allowedStyles: {
+                        '*': {
+                          'color': [/.*/],
+                          'background-color': [/.*/],
+                          'background': [/.*/],
+                          'font-size': [/.*/],
+                          'font-weight': [/.*/],
+                          'text-align': [/.*/],
+                          'padding': [/.*/],
+                          'margin': [/.*/],
+                          'line-height': [/.*/],
+                        },
+                      },
                     }) }}
                   />
                 </div>
