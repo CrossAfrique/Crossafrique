@@ -241,14 +241,80 @@
   min-width: 250px;
 }
 
-/* Preserve Elementor inline styles */
-.prose [style] {
-  all: revert;
+/* Elementor paragraph and heading styles */
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
 }
 
-.prose span[style],
-.prose div[style],
-.prose p[style] {
-  color: inherit;
-  background-color: inherit;
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.prose h1 { font-size: 2.25rem; }
+.prose h2 { font-size: 1.875rem; }
+.prose h3 { font-size: 1.5rem; }
+.prose h4 { font-size: 1.25rem; }
+.prose h5 { font-size: 1.125rem; }
+.prose h6 { font-size: 1rem; }
+
+/* Elementor text editor content */
+.prose .elementor-text-editor p {
+  margin-bottom: 1rem;
+}
+
+.prose .elementor-text-editor h1,
+.prose .elementor-text-editor h2,
+.prose .elementor-text-editor h3,
+.prose .elementor-text-editor h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Elementor section and container spacing */
+.prose .elementor-section {
+  margin-bottom: 1.5rem;
+}
+
+.prose .elementor-container {
+  margin-bottom: 1rem;
+}
+
+/* Preserve ALL Elementor inline styles properly */
+.prose [style*="color"],
+.prose [style*="background"],
+.prose [style*="font-size"],
+.prose [style*="font-weight"],
+.prose [style*="text-align"],
+.prose [style*="line-height"],
+.prose [style*="padding"],
+.prose [style*="margin"] {
+  /* Allow inline styles to take precedence */
+}
+
+/* Elementor button styles */
+.prose .elementor-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+/* Elementor divider */
+.prose .elementor-divider {
+  margin: 1.5rem 0;
+}
+
+/* Excerpt styles for blog cards */
+.prose-excerpt p {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
