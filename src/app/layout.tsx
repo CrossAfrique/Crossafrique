@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 	title: "Crossafrique Hydrogen - Fueling Africa's Growth with Clean Hydrogen",
 	description:
 		"Crossafrique Hydrogen is dedicated to developing sustainable hydrogen solutions across the African continent.",
+	icons: {
+ 		icon: [
+ 			{ url: "/crossafriquehydrogen.svg", type: "image/svg+xml" },
+ 			{ url: "/favicon.ico" },
+ 		],
+ 		apple: "/crossafriquehydrogen.svg",
+ 	},
 };
 
 export default function RootLayout({
