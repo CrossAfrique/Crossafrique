@@ -83,6 +83,19 @@ const CONTACT_INFO = [
 	},
 ];
 
+const PARTNERS = [
+	{ name: "CU", file: "/partner/cu.svg", href: "#" },
+	{ name: "Afe", file: "/partner/Afe.svg", href: "#" },
+	{ name: "ahf", file: "/partner/ahf.svg", href: "#" },
+	{ name: "hyvault", file: "/partner/hyvault.svg", href: "#" },
+	{ name: "Daramanihot", file: "/partner/Daramanihot.svg", href: "#" },
+	{ name: "soventix", file: "/partner/soventix.svg", href: "#" },
+	{ name: "Hydrogem", file: "/partner/Hydrogem.svg", href: "#" },
+	{ name: "Taatisolar", file: "/partner/Taatisolar.svg", href: "#" },
+	{ name: "Solarcentric", file: "/partner/Solarcentric.svg", href: "#" },
+	{ name: "Arboreta", file: "/partner/Arboreta.svg", href: "#" },
+];
+
 const Footer = () => {
 	const currentYear = new Date().getFullYear();
 
@@ -164,6 +177,28 @@ const Footer = () => {
 								</li>
 							))}
 						</ul>
+					</div>
+				</div>
+
+				{/* Partners row */}
+				<div className="mt-10">
+					<h3 className="text-lg font-semibold mb-4 text-center">Partners</h3>
+					<div className="flex flex-wrap items-center justify-center gap-6">
+						{PARTNERS.map((p) => (
+							<a
+								key={p.name}
+								href={p.href}
+								className="inline-flex items-center"
+								aria-label={`${p.name} Logo Link`}
+							>
+								<img
+									src={p.file}
+									alt={`${p.name} Logo`}
+									className="h-12 md:h-14 object-contain filter grayscale hover:grayscale-0 transition duration-200"
+									style={{ height: 56 }}
+								/>
+							</a>
+						))}
 					</div>
 				</div>
 
