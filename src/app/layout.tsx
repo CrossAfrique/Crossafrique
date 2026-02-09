@@ -15,14 +15,13 @@ export const metadata: Metadata = {
       // Browser favicons (PNG versions for better compatibility)
       { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      // Optional: If you have a favicon.ico in the folder, add it as a fallback
       // { url: "/favicon_io/favicon.ico", type: "image/x-icon" },
     ],
     apple: [
       // Apple touch icon
       { url: "/favicon_io/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
-    // Optional: If you have other sizes or shortcuts, add them here (e.g., for Android)
+   
     // other: { rel: "apple-touch-icon-precomposed", url: "/favicon_io/apple-touch-icon.png" },
   },
 };
