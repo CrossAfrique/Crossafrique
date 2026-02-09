@@ -25,7 +25,7 @@ export const projects = [
 		shortDescription: "As part of its commitment to advancing Africa's clean energy transition, CrossAfrique Hydrogen supports the delivery of the Africa Hydrogen Fellowship (AHF), a flagship capacity-building programme focused on accelerating the continent's hydrogen economy.",
 		image: "/AHF_partnership.png",
 		location: "Virtual & Physical",
-		status: "In Development",
+		status: "Implementation",
 		year: "2025",
 	},
 ];
