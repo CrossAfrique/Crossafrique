@@ -1,6 +1,5 @@
 import EnergyHubImg from "@/app/_assets/images/energy-hub.jpg";
 import FinancialStructuringImg from "@/app/_assets/images/financial-structuring.jpg";
-import H2RealImg from "@/app/_assets/images/h2real.png";
 import CUHubImg from "@/app/_assets/images/CU_hub.png";
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import SystemArchitectureImg from "@/app/_assets/images/system-architecture.jpg";
@@ -20,11 +19,11 @@ export const projects = [
 	},
 	{
 		id: "2",
-		title: "H2Real",
+		title: "Africa Hydrogen Fellowship",
 		description:
-		"H2Real is an industrial-scale demonstration project that transforms residual waste into clean hydrogen, showcasing the economic and environmental benefits of integrated renewable energy and hydrogen systems.\n\nThe project addresses critical waste management challenges by converting organic waste into valuable green hydrogen, which is then used to power industrial processes and support clean energy storage.\n\nThrough a strategic partnership combining advanced biogas-to-hydrogen technology with solar PV and smart energy management, H2Real demonstrates how waste-to-energy systems can contribute to both waste reduction and renewable energy goals. The project aims to provide a replicable model for waste-to-hydrogen deployment across industrial zones, municipalities, and waste management facilities throughout Africa.",
-		shortDescription: "H2Real is an industrial-scale demonstration project that transforms residual waste into clean hydrogen, showcasing the economic and environmental benefits of integrated renewable energy and hydrogen systems.",
-		image: H2RealImg,
+		"The Africa Hydrogen Fellowship\n\nAs part of its commitment to advancing Africa's clean energy transition, CrossAfrique Hydrogen supports the delivery of the Africa Hydrogen Fellowship (AHF), a flagship capacity-building programme focused on accelerating the continent's hydrogen economy.\n\nThe Africa Hydrogen Fellowship is designed to close critical knowledge gaps and equip African youth with specialized expertise in hydrogen technologies. The programme delivers a structured, industry-aligned learning experience that integrates technical and commercial hydrogen education, policy and regulatory insights, practical hands-on learning, and mentorship from leading global hydrogen experts.\n\nThrough this multidisciplinary approach, the Fellowship is building a strong pipeline of future African hydrogen leaders, innovators, and entrepreneurs capable of designing, financing, and scaling hydrogen and clean energy projects across the continent.\n\nFor CrossAfrique Hydrogen, this work reflects our belief that Africa's energy transition requires more than infrastructure alone. Alongside deploying green energy solutions, we are committed to strengthening the human and institutional capacity needed to sustain long-term impact and leadership in the hydrogen sector.",
+		shortDescription: "As part of its commitment to advancing Africa's clean energy transition, CrossAfrique Hydrogen supports the delivery of the Africa Hydrogen Fellowship (AHF), a flagship capacity-building programme focused on accelerating the continent's hydrogen economy.",
+		image: "/AHF_partnership.png",
 		location: "Virtual & Physical",
 		status: "In Development",
 		year: "2025",

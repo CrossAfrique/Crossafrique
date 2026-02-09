@@ -83,18 +83,18 @@ const CONTACT_INFO = [
 	},
 ];
 
-const PARTNERS = [
-	{ name: "CU", file: "/partner/cu.svg", href: "#" },
-	{ name: "Afe", file: "/partner/Afe.svg", href: "#" },
-	{ name: "ahf", file: "/partner/ahf.svg", href: "#" },
-	{ name: "hyvault", file: "/partner/hyvault.svg", href: "#" },
-	{ name: "Daramanihot", file: "/partner/Daramanihot.svg", href: "#" },
-	{ name: "soventix", file: "/partner/soventix.svg", href: "#" },
-	{ name: "Hydrogem", file: "/partner/Hydrogem.svg", href: "#" },
-	{ name: "Taatisolar", file: "/partner/Taatisolar.svg", href: "#" },
-	{ name: "Solarcentric", file: "/partner/Solarcentric.svg", href: "#" },
-	{ name: "Arboreta", file: "/partner/Arboreta.svg", href: "#" },
-];
+// const PARTNERS = [
+// 	{ name: "CU", file: "/partner/cu.svg", href: "#" },
+// 	{ name: "Afe", file: "/partner/Afe.svg", href: "#" },
+// 	{ name: "ahf", file: "/partner/ahf.svg", href: "#" },
+// 	{ name: "hyvault", file: "/partner/hyvault.svg", href: "#" },
+// 	{ name: "Daramanihot", file: "/partner/Daramanihot.svg", href: "#" },
+// 	{ name: "soventix", file: "/partner/soventix.svg", href: "#" },
+// 	{ name: "Hydrogem", file: "/partner/Hydrogem.svg", href: "#" },
+// 	{ name: "Taatisolar", file: "/partner/Taatisolar.svg", href: "#" },
+// 	{ name: "Solarcentric", file: "/partner/Solarcentric.svg", href: "#" },
+// 	{ name: "Arboreta", file: "/partner/Arboreta.svg", href: "#" },
+// ];
 
 const Footer = () => {
 	const currentYear = new Date().getFullYear();
@@ -180,8 +180,8 @@ const Footer = () => {
 					</div>
 				</div>
 
-				{/* Partners row */}
-				<div className="mt-10">
+				{/* Partners row - COMMENTED OUT */}
+				{/* <div className="mt-10">
 					<h3 className="text-lg font-semibold mb-4 text-center">Partners</h3>
 					<div className="flex flex-wrap items-center justify-center gap-6">
 						{PARTNERS.map((p) => (
@@ -200,7 +200,7 @@ const Footer = () => {
 							</a>
 						))}
 					</div>
-				</div>
+				</div> */
 
 				<div className="border-t border-gray-800 mt-12 pt-8">
 					<p className="text-gray-500 text-center">
