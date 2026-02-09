@@ -181,7 +181,8 @@ const Footer = () => {
 				</div>
 
 				{/* Partners row - COMMENTED OUT */}
-				{/* <div className="mt-10">
+				{/* 
+				<div className="mt-10">
 					<h3 className="text-lg font-semibold mb-4 text-center">Partners</h3>
 					<div className="flex flex-wrap items-center justify-center gap-6">
 						{PARTNERS.map((p) => (
@@ -200,7 +201,8 @@ const Footer = () => {
 							</a>
 						))}
 					</div>
-				</div> */
+				</div>
+				*/}
 
 				<div className="border-t border-gray-800 mt-12 pt-8">
 					<p className="text-gray-500 text-center">

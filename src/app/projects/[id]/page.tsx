@@ -74,12 +74,12 @@ export default function ProjectDetailPage() {
 
 	return (
 		<div className="pt-16">
-			<div className="relative h-[50vh] min-h-[400px] w-full">
+			<div className="relative h-[50vh] min-h-[400px] w-full bg-gray-100">
 				<Image
 					src={project.image}
 					alt={project.title}
 					fill
-					className="object-cover"
+					className="object-contain"
 					priority
 				/>
 				<div className="absolute inset-0 bg-black/60 flex items-end">
