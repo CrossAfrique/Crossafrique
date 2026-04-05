@@ -1,7 +1,7 @@
 
 import IndustrialApplicationImg from "@/app/_assets/images/industrial-application.jpg";
 import { Button } from "@/components/ui/button";
-import parse from "html-react-parser";
+import sanitizeHtml from "sanitize-html";
 import { ArrowLeft, Calendar, Share2, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +10,63 @@ import {
   getWordPressBlogPosts,
 } from "@/app/blog/_actions";
 import type { WordPressBlogPost } from "@/app/blog/types";
+
+function getSanitizedHtml(html: string) {
+  // For proper Elementor rendering, allow common HTML tags but keep it safe
+  return sanitizeHtml(html, {
+    allowedTags: [
+      'b', 'i', 'em', 'strong', 'a', 'p', 'br', 'span', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+      'ul', 'ol', 'li', 'blockquote', 'img', 'figure', 'figcaption', 'table', 'tr', 'td', 'th',
+      'thead', 'tbody', 'tfoot', 'section', 'article', 'header', 'footer', 'main',
+    ],
+    allowedAttributes: {
+      '*': ['class', 'id', 'style', 'data-*'],
+      'a': ['href', 'target', 'rel', 'title'],
+      'img': ['src', 'alt', 'width', 'height', 'title'],
+      'table': ['border', 'cellpadding', 'cellspacing'],
+    },
+    allowVulnerableTags: false,
+    allowedSchemes: ['http', 'https', 'mailto', 'data'],
+    allowedStyles: {
+      '*': {
+        color: [/.*/],
+        'background-color': [/.*/],
+        'background': [/.*/],
+        'text-align': [/.*/],
+        'font-size': [/.*/],
+        'font-weight': [/.*/],
+        'line-height': [/.*/],
+        'margin': [/.*/],
+        'margin-top': [/.*/],
+        'margin-bottom': [/.*/],
+        'margin-left': [/.*/],
+        'margin-right': [/.*/],
+        'padding': [/.*/],
+        'padding-top': [/.*/],
+        'padding-bottom': [/.*/],
+        'padding-left': [/.*/],
+        'padding-right': [/.*/],
+        'width': [/.*/],
+        'height': [/.*/],
+        'border': [/.*/],
+        'border-radius': [/.*/],
+        'display': [/.*/],
+        'position': [/.*/],
+        'top': [/.*/],
+        'left': [/.*/],
+        'right': [/.*/],
+        'bottom': [/.*/],
+        'text-decoration': [/.*/],
+        'letter-spacing': [/.*/],
+        'box-shadow': [/.*/],
+        'opacity': [/.*/],
+      },
+    },
+    transformTags: {
+      a: sanitizeHtml.simpleTransform('a', { target: '_blank', rel: 'noopener noreferrer' }),
+    },
+  });
+}
 
 interface BlogPostPageProps {
   params: Promise<{ id: string }>;
@@ -113,8 +170,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               Back to all articles
             </Link>
 
-            <article className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-emerald-600 hover:prose-a:text-emerald-700">
-              <div>{parse(post.content || "")}</div>
+            <article className="max-w-none">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: getSanitizedHtml(post.content || ""),
+                }}
+              />
             </article>
 
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">

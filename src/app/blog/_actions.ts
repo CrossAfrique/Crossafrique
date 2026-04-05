@@ -13,7 +13,7 @@ import type {
 const BASE_URL =
   process.env.WORDPRESS_API_BASE_URL ||
   "https://mx5.88c.myftpupload.com/wp-json/wp/v2/";
-const CACHE_TIME = 60 * 20; // 20 minutes cache
+const CACHE_TIME = 60 * 2; // 2 minutes cache
 
 function extractFirstImageFromContent(htmlContent: string): string | null {
   const imgMatch = htmlContent.match(/<img[^>]+src=["']([^"']+)["']/i);
@@ -100,6 +100,7 @@ async function wordPressFetch<T>(
 
 async function transformPost(
   post: WordPressPostResponse,
+  type: 'post' | 'page' = 'post',
 ): Promise<WordPressBlogPost> {
   let author: IAuthor = {
     ID: post.author,
@@ -204,17 +205,19 @@ async function transformPost(
     content: post.content?.rendered,
     modified: post.modified,
     categories: Object.fromEntries(categories),
+    type,
   };
 }
 
 async function transformPosts(
   data: WordPressPostResponse | WordPressPostResponse[],
+  type: 'post' | 'page' = 'post',
 ): Promise<WordPressBlogPosts> {
   if (Array.isArray(data)) {
-    const posts = await Promise.all(data.map(transformPost));
+    const posts = await Promise.all(data.map(post => transformPost(post, type)));
     return { found: data.length, posts };
   } else {
-    const post = await transformPost(data);
+    const post = await transformPost(data, type);
     return { found: 1, posts: [post] };
   }
 }
@@ -235,14 +238,24 @@ export async function getWordPressBlogPosts({
   if (exclude) params.append("exclude", exclude.toString());
   if (search) params.append("search", search);
 
-  const url = `${BASE_URL}posts?${params.toString()}`;
-  console.log("Fetching URL:", url);
+  // Fetch both posts and pages
+  const postsUrl = `${BASE_URL}posts?${params.toString()}`;
+  const pagesUrl = `${BASE_URL}pages?${params.toString()}`;
+
+  console.log("Fetching posts URL:", postsUrl);
+  console.log("Fetching pages URL:", pagesUrl);
 
   try {
-    const data = await wordPressFetch<WordPressPostResponse[]>(url);
-    return await transformPosts(data);
+    const [postsData, pagesData] = await Promise.all([
+      wordPressFetch<WordPressPostResponse[]>(postsUrl),
+      wordPressFetch<WordPressPostResponse[]>(pagesUrl),
+    ]);
+
+    const allData = [...postsData.map(p => ({ ...p, _type: 'post' as const })), ...pagesData.map(p => ({ ...p, _type: 'page' as const }))];
+    const transformedPosts = await Promise.all(allData.map(item => transformPost(item, item._type)));
+    return { found: allData.length, posts: transformedPosts };
   } catch (error) {
-    console.error("Error fetching blog posts:", error);
+    console.error("Error fetching blog posts and pages:", error);
     return { found: 0, posts: [] };
   }
 }
@@ -254,14 +267,25 @@ export async function getWordPressBlogPost({
     throw new Error("Invalid blogId");
   }
 
-  const url = `${BASE_URL}posts/${blogId}`;
-  console.log("Fetching single post URL:", url);
+  // First try fetching from posts
+  const postUrl = `${BASE_URL}posts/${blogId}?_embed=true`;
+  console.log("Fetching single post URL:", postUrl);
 
   try {
-    const data = await wordPressFetch<WordPressPostResponse>(url);
-    return await transformPost(data);
+    const data = await wordPressFetch<WordPressPostResponse>(postUrl);
+    return await transformPost(data, 'post');
   } catch (error) {
-    console.error("Error fetching blog post:", error);
-    throw new Error("Failed to fetch blog post");
+    console.log("Post not found, trying pages...");
+    // If post fetch fails, try pages
+    const pageUrl = `${BASE_URL}pages/${blogId}?_embed=true`;
+    console.log("Fetching single page URL:", pageUrl);
+
+    try {
+      const data = await wordPressFetch<WordPressPostResponse>(pageUrl);
+      return await transformPost(data, 'page');
+    } catch (pageError) {
+      console.error("Error fetching blog post or page:", error, pageError);
+      throw new Error("Failed to fetch blog post or page");
+    }
   }
 }

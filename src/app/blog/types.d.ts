@@ -51,6 +51,7 @@ export interface WordPressBlogPost {
   content?: string;
   modified?: string;
   categories: Record<string, IWordPressCategory>;
+  type?: 'post' | 'page';
 }
 
 export interface WordPressBlogPosts {

@@ -13,7 +13,7 @@ export const metadata = {
 export default async function BlogPage() {
   let posts: WordPressBlogPost[] = [];
   try {
-    const { posts: fetchedPosts } = await getWordPressBlogPosts({ limit: 2 });
+    const { posts: fetchedPosts } = await getWordPressBlogPosts({ limit: 50 });
     posts = fetchedPosts;
   } catch (error) {
     console.error("Failed to load posts:", error);
