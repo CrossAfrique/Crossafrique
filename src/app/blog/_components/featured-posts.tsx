@@ -14,7 +14,11 @@ interface FeaturedPostsProps {
 const PDF_PUBLICATION = {
   ID: -1,
   title: "Curtailment Report",
-  description: "Analysis of curtailment challenges in renewable energy integration and the role of hydrogen as long-duration storage solution for African grids.",
+  description: `Across sub-Saharan Africa, solar PV installations are growing rapidly. 
+  Yet a significant fraction of the clean energy they produce is routinely wasted. It is curtailed because the load, 
+  the storage system, or the grid cannot absorb it at the moment it is generated. 
+  This white paper explains why curtailment happens, quantifies the scale of the opportunity, 
+  and presents green hydrogen production as a proven, bankable pathway to convert that waste into a storable, trade-able, and decarbonizing energy carrier.`,
   pdfUrl: "https://mx5.88c.myftpupload.com/wp-content/uploads/2026/04/Curtailment-report-CrossAfrique_1.pdf",
   coverImage: IndustrialApplicationImg,
 };
