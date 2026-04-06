@@ -17,13 +17,16 @@ function getSanitizedHtml(html: string) {
     allowedTags: [
       'b', 'i', 'em', 'strong', 'a', 'p', 'br', 'span', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
       'ul', 'ol', 'li', 'blockquote', 'img', 'figure', 'figcaption', 'table', 'tr', 'td', 'th',
-      'thead', 'tbody', 'tfoot', 'section', 'article', 'header', 'footer', 'main',
+      'thead', 'tbody', 'tfoot', 'section', 'article', 'header', 'footer', 'main', 'sup', 'sub',
+      'mark', 'del', 'ins', 'code', 'pre', 'kbd', 'samp',
     ],
     allowedAttributes: {
       '*': ['class', 'id', 'style', 'data-*'],
-      'a': ['href', 'target', 'rel', 'title'],
-      'img': ['src', 'alt', 'width', 'height', 'title'],
-      'table': ['border', 'cellpadding', 'cellspacing'],
+      'a': ['href', 'target', 'rel', 'title', 'aria-label'],
+      'img': ['src', 'alt', 'width', 'height', 'title', 'loading'],
+      'table': ['border', 'cellpadding', 'cellspacing', 'summary'],
+      'video': ['src', 'controls', 'width', 'height', 'poster'],
+      'source': ['src', 'type'],
     },
     allowVulnerableTags: false,
     allowedSchemes: ['http', 'https', 'mailto', 'data'],
@@ -33,9 +36,12 @@ function getSanitizedHtml(html: string) {
         'background-color': [/.*/],
         'background': [/.*/],
         'text-align': [/.*/],
+        'text-decoration': [/.*/],
         'font-size': [/.*/],
         'font-weight': [/.*/],
+        'font-style': [/.*/],
         'line-height': [/.*/],
+        'letter-spacing': [/.*/],
         'margin': [/.*/],
         'margin-top': [/.*/],
         'margin-bottom': [/.*/],
@@ -48,18 +54,32 @@ function getSanitizedHtml(html: string) {
         'padding-right': [/.*/],
         'width': [/.*/],
         'height': [/.*/],
+        'max-width': [/.*/],
+        'max-height': [/.*/],
+        'min-width': [/.*/],
+        'min-height': [/.*/],
         'border': [/.*/],
         'border-radius': [/.*/],
+        'border-color': [/.*/],
+        'border-width': [/.*/],
+        'border-style': [/.*/],
         'display': [/.*/],
         'position': [/.*/],
         'top': [/.*/],
         'left': [/.*/],
         'right': [/.*/],
         'bottom': [/.*/],
-        'text-decoration': [/.*/],
-        'letter-spacing': [/.*/],
         'box-shadow': [/.*/],
         'opacity': [/.*/],
+        'transform': [/.*/],
+        'flex': [/.*/],
+        'flex-direction': [/.*/],
+        'justify-content': [/.*/],
+        'align-items': [/.*/],
+        'gap': [/.*/],
+        'z-index': [/.*/],
+        'overflow': [/.*/],
+        'vertical-align': [/.*/],
       },
     },
     transformTags: {
@@ -170,8 +190,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               Back to all articles
             </Link>
 
-            <article className="max-w-none">
+            <article className="max-w-none prose prose-lg">
               <div
+                className="elementor-content"
                 dangerouslySetInnerHTML={{
                   __html: getSanitizedHtml(post.content || ""),
                 }}
