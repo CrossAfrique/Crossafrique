@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import PDFCard from "@/app/blog/_components/PDFCard";
 import PostCard from "@/app/blog/_components/PostCard";
-import IndustrialApplicationImg from "@/app/_assets/images/curtailment.png";
 import type { WordPressBlogPost } from "@/app/blog/types";
 
 interface FeaturedPostsProps {
@@ -11,17 +9,17 @@ interface FeaturedPostsProps {
 }
 
 // Hardcoded PDF Publication
-const PDF_PUBLICATION = {
-  ID: -1,
-  title: "Curtailment Report",
-  description: `Across sub-Saharan Africa, solar PV installations are growing rapidly. 
-  Yet a significant fraction of the clean energy they produce is routinely wasted. It is curtailed because the load, 
-  the storage system, or the grid cannot absorb it at the moment it is generated. 
-  This white paper explains why curtailment happens, quantifies the scale of the opportunity, 
-  and presents green hydrogen production as a proven, bankable pathway to convert that waste into a storable, trade-able, and decarbonizing energy carrier.`,
-  pdfUrl: "https://mx5.88c.myftpupload.com/wp-content/uploads/2026/04/Curtailment-report-CrossAfrique_1.pdf",
-  coverImage: IndustrialApplicationImg,
-};
+// const PDF_PUBLICATION = {
+//   ID: -1,
+//   title: "Curtailment Report",
+//   description: `Across sub-Saharan Africa, solar PV installations are growing rapidly. 
+//   Yet a significant fraction of the clean energy they produce is routinely wasted. It is curtailed because the load, 
+//   the storage system, or the grid cannot absorb it at the moment it is generated. 
+//   This white paper explains why curtailment happens, quantifies the scale of the opportunity, 
+//   and presents green hydrogen production as a proven, bankable pathway to convert that waste into a storable, trade-able, and decarbonizing energy carrier.`,
+//   pdfUrl: "https://mx5.88c.myftpupload.com/wp-content/uploads/2026/04/Curtailment-report-CrossAfrique_1.pdf",
+//   coverImage: IndustrialApplicationImg,
+// };
 
 export default function FeaturedPosts({ initialPosts }: FeaturedPostsProps) {
   return (
@@ -38,13 +36,13 @@ export default function FeaturedPosts({ initialPosts }: FeaturedPostsProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Hardcoded PDF Publication Card */}
-          <PDFCard
+          {/* <PDFCard
             index={0}
             title={PDF_PUBLICATION.title}
             description={PDF_PUBLICATION.description}
             pdfUrl={PDF_PUBLICATION.pdfUrl}
             coverImage={typeof PDF_PUBLICATION.coverImage === 'string' ? PDF_PUBLICATION.coverImage : (PDF_PUBLICATION.coverImage as any).src}
-          />
+          /> */}
 
           {/* WordPress Blog Posts */}
           {initialPosts.map((post, index) => (
