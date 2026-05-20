@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import PostCard from "@/app/blog/_components/PostCard";
 import type { WordPressBlogPost } from "@/app/blog/types";
 import PDFCard from "./PDFCard";
+import CurtailmentImage from "@/app/_assets/images/curtailment.png";
 
 interface FeaturedPostsProps {
   initialPosts: WordPressBlogPost[];
 }
 
-// Hardcoded PDF Publication
 const PDF_PUBLICATION = {
   ID: -1,
   title: "Curtailment Report",
@@ -20,9 +20,8 @@ successfully generated at the module level but has no useful destination. This d
 matters: curtailed energy carries the full capital cost of the PV system yet generates zero
 revenue.`,
   pdfUrl: "https://mx5.88c.myftpupload.com/wp-content/uploads/2026/05/Curtailment_Report_CrossAfrique_White_Paper_First-Edition.pdf",
-  // Use a string URL or empty string for the cover image to avoid missing import
-  coverImage: "",
- };
+  coverImage: CurtailmentImage,
+};
 
 export default function FeaturedPosts({ initialPosts }: FeaturedPostsProps) {
   return (
@@ -38,16 +37,14 @@ export default function FeaturedPosts({ initialPosts }: FeaturedPostsProps) {
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          Hardcoded PDF Publication Card
           <PDFCard
             index={0}
             title={PDF_PUBLICATION.title}
             description={PDF_PUBLICATION.description}
             pdfUrl={PDF_PUBLICATION.pdfUrl}
-            coverImage={typeof PDF_PUBLICATION.coverImage === 'string' ? PDF_PUBLICATION.coverImage : (PDF_PUBLICATION.coverImage as any).src}
+            coverImage={PDF_PUBLICATION.coverImage}
           />
 
-          WordPress Blog Posts
           {initialPosts.map((post, index) => (
             <PostCard
               key={post.ID}

@@ -1,4 +1,5 @@
 "use client";
+import Image, { type StaticImageData } from "next/image";
 import { Download, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -6,7 +7,7 @@ interface PDFCardProps {
   title: string;
   description?: string;
   pdfUrl: string;
-  coverImage?: string;
+  coverImage?: string | StaticImageData;
   index?: number;
 }
 
@@ -26,11 +27,12 @@ export default function PDFCard({
     >
       {/* Cover Image */}
       {coverImage && (
-        <div className="relative h-56">
-          <img
+        <div className="relative h-56 w-full">
+          <Image
             src={coverImage}
             alt={title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         </div>
       )}
